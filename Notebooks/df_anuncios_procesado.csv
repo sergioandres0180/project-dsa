@@ -1,0 +1,550 @@
+valor_cop,area,Cuartos,tipo,city,Ciudad,barrio_limpio,barrio_target_enc
+683600000,55.02,2,apartamento,Antioquia,El Retiro,Otros,611491884.6153846
+243000000,50.9,2,apartamento,Antioquia,Caldas,Otros,611491884.6153846
+374433000,62.0,2,apartamento,Antioquia,Bello,Otros,611491884.6153846
+404400000,62.45,2,apartamento,Antioquia,La estrella,Otros,611491884.6153846
+574760000,63.22,2,apartamento,Antioquia,Itaguí,Otros,611491884.6153846
+714000000,75.58,2,apartamento,Antioquia,Envigado,Otros,611491884.6153846
+1466540000,140.0,3,casa,Antioquia,El Retiro,Otros,611491884.6153846
+1148157500,87.35,3,apartamento,Antioquia,Envigado,Otros,611491884.6153846
+341064000,59.8,2,apartamento,Antioquia,Rionegro,Otros,611491884.6153846
+759440000,83.5,2,apartamento,Antioquia,La ceja,Otros,611491884.6153846
+415000000,52.0,2,apartamento,Antioquia,La estrella,Otros,611491884.6153846
+590000000,94.0,3,casa,Antioquia,El Retiro,Otros,611491884.6153846
+235000000,54.51,2,apartamento,Antioquia,Bello,Otros,611491884.6153846
+140410000,37.81,2,apartamento,Atlantico,Soledad,Otros,768161732.25
+263970000,54.99,2,apartamento,Atlantico,Barranquilla,Otros,768161732.25
+339120429,65.31,2,apartamento,Atlantico,Conjunto residencial villa campestre,Otros,768161732.25
+339120429,65.31,2,apartamento,Atlantico,Conjunto residencial villa campestre,Otros,768161732.25
+1450000000,191.0,3,casa,Atlantico,Puerto colombia,Otros,768161732.25
+206303000,42.38,2,apartamento,Atlantico,Soledad,Otros,768161732.25
+206370000,59.89,2,apartamento,Atlantico,Soledad,Otros,768161732.25
+3200000000,600.0,5,casa,Atlantico,Altos de pradomar,Otros,768161732.25
+221080000,37.28,1,apartamento,Cundinamarca,Cajicá,Otros,299871316.6666667
+215334450,54.54,1,apartamento,Cundinamarca,Fusagasugá,Otros,299871316.6666667
+217999000,38.5,2,apartamento,Cundinamarca,Mosquera,Otros,299871316.6666667
+172853050,47.0,2,apartamento,Cundinamarca,Soacha,Otros,299871316.6666667
+222068198,53.26,2,apartamento,Cundinamarca,Ricaurte,Ricaurte,261984608.16666666
+341113451,58.88,2,apartamento,Cundinamarca,Ricaurte,Ricaurte,261984608.16666666
+236300000,52.8,2,apartamento,Cundinamarca,Zipaquirá,Otros,299871316.6666667
+192172500,57.0,2,apartamento,Cundinamarca,Ricaurte,Ricaurte,261984608.16666666
+490000000,80.0,2,casa,Cundinamarca,La mesa,Otros,299871316.6666667
+860671000,91.15,3,casa,Cundinamarca,Cota,Otros,299871316.6666667
+135276300,39.0,1,apartamento,Cundinamarca,Soacha,Otros,299871316.6666667
+200000000,57.0,2,apartamento,Cundinamarca,Soacha,Otros,299871316.6666667
+192172500,52.97,2,apartamento,Cundinamarca,Ricaurte,Ricaurte,261984608.16666666
+277490000,57.84,2,apartamento,Cundinamarca,Ricaurte,Ricaurte,261984608.16666666
+311628000,58.51,2,apartamento,Cundinamarca,Zipaquirá,Otros,299871316.6666667
+220000000,65.0,2,apartamento,Cundinamarca,Soacha,Otros,299871316.6666667
+346891000,65.65,2,apartamento,Cundinamarca,Ricaurte,Ricaurte,261984608.16666666
+317314000,72.88,2,apartamento,Cundinamarca,Zipaquirá,Otros,299871316.6666667
+342251000,60.78,1,apartamento,Risaralda,Dosquebradas,Dosquebradas,465608199.2
+279489996,37.55,2,apartamento,Risaralda,Dosquebradas,Dosquebradas,465608199.2
+417300000,66.04,2,apartamento,Risaralda,Dosquebradas,Dosquebradas,465608199.2
+620000000,136.63,3,casa,Risaralda,Dosquebradas,Dosquebradas,465608199.2
+669000000,100.0,2,casa,Risaralda,Dosquebradas,Dosquebradas,465608199.2
+139646000,33.02,1,apartamento,Santander,Floridablanca,Floridablanca,284958142.85714287
+128115000,42.83,1,casa,Santander,Lebrija,Otros,172705000.0
+195000000,58.1,2,apartamento,Santander,Piedecuesta,Otros,172705000.0
+195000000,58.1,2,apartamento,Santander,Piedecuesta,Otros,172705000.0
+232740000,62.49,2,apartamento,Santander,Floridablanca,Floridablanca,284958142.85714287
+232740000,62.49,2,apartamento,Santander,Floridablanca,Floridablanca,284958142.85714287
+249030000,63.03,2,apartamento,Santander,Floridablanca,Floridablanca,284958142.85714287
+249030000,63.03,2,apartamento,Santander,Floridablanca,Floridablanca,284958142.85714287
+434470000,77.72,2,apartamento,Santander,Floridablanca,Floridablanca,284958142.85714287
+457051000,70.88,2,apartamento,Santander,Floridablanca,Floridablanca,284958142.85714287
+211389750,55.0,2,apartamento,Tolima,Melgar,Otros,274271350.0
+405467000,90.46,2,apartamento,Tolima,Ibagué,Otros,274271350.0
+192172500,56.67,2,apartamento,Tolima,Ibagué,Otros,274271350.0
+192172500,56.67,2,apartamento,Tolima,Ibagué,Otros,274271350.0
+370155000,71.96,2,apartamento,Tolima,Ibagué,Otros,274271350.0
+210622000,54.85,1,casa,Valle Del Cauca,Jamundí,Otros,153445419.8181818
+149721595,30.05,1,casa,Valle Del Cauca,El cerrito,Otros,153445419.8181818
+142592000,40.09,1,apartamento,Valle Del Cauca,Cali,Otros,153445419.8181818
+149721595,41.03,1,casa,Valle Del Cauca,Jamundí,Otros,153445419.8181818
+128115000,43.98,1,casa,Valle Del Cauca,Trujillo,Otros,153445419.8181818
+128115000,44.78,1,casa,Valle Del Cauca,San pedro,Otros,153445419.8181818
+130000000,53.91,1,casa,Valle Del Cauca,Florida,Otros,153445419.8181818
+163702500,53.91,1,casa,Valle Del Cauca,Zarzal,Otros,153445419.8181818
+142591995,60.5,1,casa,Valle Del Cauca,El cerrito,Otros,153445419.8181818
+214602933,63.33,1,casa,Valle Del Cauca,Jamundí,Otros,153445419.8181818
+128115000,72.0,2,casa,Valle Del Cauca,Alcala,Otros,153445419.8181818
+191310927,39.92,1,apartamento,Armenia,Puerto Espejo,Otros,254324988.42857143
+146600000,40.84,1,apartamento,Armenia,Ciudadela Comfenalco,Otros,254324988.42857143
+476000000,60.56,2,apartamento,Armenia,Avenida Centenario,Avenida Centenario,286503676.6666667
+200685030,53.4,1,apartamento,Armenia,Avenida Centenario,Avenida Centenario,286503676.6666667
+200685030,53.4,1,apartamento,Armenia,Avenida Centenario,Avenida Centenario,286503676.6666667
+444053100,63.11,2,apartamento,Armenia,Fundadores,Otros,254324988.42857143
+224582392,48.09,1,apartamento,Armenia,Sector centro,Otros,254324988.42857143
+419728500,47.15,1,apartamento,Armenia,El Caimo,Otros,254324988.42857143
+175200000,35.04,1,apartamento,Armenia,Avenida Centenario,Avenida Centenario,286503676.6666667
+150000000,41.0,1,apartamento,Armenia,Cr. caminos del bosque,Otros,254324988.42857143
+439452000,56.34,1,apartamento,Armenia,Avenida Centenario,Avenida Centenario,286503676.6666667
+227000000,53.16,2,apartamento,Armenia,Avenida Centenario,Avenida Centenario,286503676.6666667
+204000000,55.04,2,apartamento,Armenia,Bloques bosques de pinares,Otros,254324988.42857143
+844272000,83.0,3,apartamento,Barranquilla,Buenavista,Buenavista,554438700.0
+574000000,91.42,3,apartamento,Barranquilla,Conjunto residencial villa campestre,Otros,385537343.85714287
+804760000,75.34,3,apartamento,Barranquilla,Riomar,Riomar,951216843.0
+446082000,74.0,2,apartamento,Barranquilla,Santo domingo de guzman,Otros,385537343.85714287
+209004705,56.06,2,apartamento,Barranquilla,Ciudad Mallorquin,Ciudad Mallorquin,199268081.0
+327042000,69.03,2,apartamento,Barranquilla,Boston,Otros,385537343.85714287
+638000000,97.79,3,apartamento,Barranquilla,Conjunto residencial villa campestre,Otros,385537343.85714287
+685406000,81.66,2,apartamento,Barranquilla,Portal de Genovés,Otros,385537343.85714287
+658633727,93.0,3,apartamento,Barranquilla,Villa santos,Otros,385537343.85714287
+217136000,40.74,2,apartamento,Barranquilla,Comuna 1,Otros,385537343.85714287
+450727800,69.39,2,apartamento,Barranquilla,El prado,Otros,385537343.85714287
+582948500,68.99,2,apartamento,Barranquilla,Buenavista,Buenavista,554438700.0
+380440000,76.5,2,apartamento,Barranquilla,Alameda del Rio,Otros,385537343.85714287
+434778000,72.23,2,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+372998415,57.52,1,apartamento,Barranquilla,Riomar,Riomar,951216843.0
+192172500,57.59,2,apartamento,Barranquilla,Ciudad Mallorquin,Ciudad Mallorquin,199268081.0
+449000000,76.86,2,apartamento,Barranquilla,Conjunto residencial villa campestre,Otros,385537343.85714287
+400035000,56.79,2,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+139646000,38.67,2,apartamento,Barranquilla,Comuna 1,Otros,385537343.85714287
+412736800,64.99,2,apartamento,Barranquilla,Riomar,Riomar,951216843.0
+281015000,40.4,2,apartamento,Barranquilla,Santo domingo de guzman,Otros,385537343.85714287
+255660000,72.94,2,apartamento,Barranquilla,Veinte de julio,Otros,385537343.85714287
+2932849000,270.0,4,apartamento,Barranquilla,Riomar,Riomar,951216843.0
+322763000,57.4,2,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+232740000,68.92,2,apartamento,Barranquilla,Veinte de julio,Otros,385537343.85714287
+181000000,57.34,2,apartamento,Barranquilla,Ciudad Mallorquin,Ciudad Mallorquin,199268081.0
+436200000,69.5,2,apartamento,Barranquilla,Buenavista,Buenavista,554438700.0
+234000000,50.0,1,apartamento,Barranquilla,Alameda del Rio,Otros,385537343.85714287
+476300000,62.5,2,apartamento,Barranquilla,Buenavista,Buenavista,554438700.0
+533385000,97.27,3,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+801420000,133.5,3,apartamento,Barranquilla,El poblado,Otros,385537343.85714287
+182000000,57.08,2,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+195000000,58.76,2,apartamento,Barranquilla,Siete de abril,Otros,385537343.85714287
+468035000,86.67,2,apartamento,Barranquilla,Villa carolina,Otros,385537343.85714287
+213525000,57.71,2,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+204703200,57.0,1,apartamento,Barranquilla,Ciudad Mallorquin,Ciudad Mallorquin,199268081.0
+209460000,46.94,2,apartamento,Barranquilla,Ciudad Mallorquin,Ciudad Mallorquin,199268081.0
+188500000,64.01,2,apartamento,Barranquilla,Comuna 1,Otros,385537343.85714287
+432473000,56.49,2,apartamento,Barranquilla,Buenavista,Buenavista,554438700.0
+273508000,45.95,1,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+1739320000,148.14,3,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+223433000,34.06,1,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+209460000,46.7,1,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+195000000,48.53,2,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+232740000,51.59,2,apartamento,Barranquilla,Riomar,Riomar,951216843.0
+325751000,55.59,2,apartamento,Barranquilla,Norte centro historico,Otros,385537343.85714287
+635696000,104.8,3,apartamento,Barranquilla,Miramar,Miramar,446908583.3333333
+148049694,41.0,1,apartamento,Barranquilla,Alameda,Otros,385537343.85714287
+213525000,54.0,2,apartamento,Bello,Urbanizacion bucaros 2,Otros,278573138.5833333
+459767663,64.0,2,apartamento,Bello,Fabricato,Otros,278573138.5833333
+213525000,54.0,2,apartamento,Bello,La navarra,Otros,278573138.5833333
+226500000,52.0,2,apartamento,Bello,Hato viejo,Otros,278573138.5833333
+278575000,65.22,2,apartamento,Bello,Asentamiento la orquidea,Otros,278573138.5833333
+300000000,47.54,2,apartamento,Bello,Niquia,Otros,278573138.5833333
+246400000,60.55,2,apartamento,Bello,Hato viejo,Otros,278573138.5833333
+192000000,55.16,1,apartamento,Bello,Hato viejo,Otros,278573138.5833333
+361975000,72.18,2,apartamento,Bello,Comuna 10,Otros,278573138.5833333
+361975000,72.18,2,apartamento,Bello,Comuna 10,Otros,278573138.5833333
+313635000,65.0,2,apartamento,Bello,Carmelo,Otros,278573138.5833333
+175000000,48.0,1,apartamento,Bello,Urbanizacion urapanes,Otros,278573138.5833333
+570775433,46.13,2,apartamento,Bogotá,Colina Campestre,Otros,511663594.18292683
+235819000,26.25,1,apartamento,Bogotá,Ricaurte,Otros,511663594.18292683
+311999000,27.0,1,apartamento,Bogotá,Las americas,Otros,511663594.18292683
+320000000,36.7,1,apartamento,Bogotá,Nueva colina,Otros,511663594.18292683
+359154574,36.04,1,apartamento,Bogotá,Bogotá,Otros,511663594.18292683
+447152534,59.0,2,apartamento,Bogotá,Marsella,Otros,511663594.18292683
+207546300,30.1,1,apartamento,Bogotá,Paloquemao,Otros,511663594.18292683
+538063000,61.38,2,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+467493000,53.02,2,apartamento,Bogotá,Toberin,Otros,511663594.18292683
+391400173,59.0,2,apartamento,Bogotá,Nueva Castilla,Otros,511663594.18292683
+713921000,77.39,2,apartamento,Bogotá,Interindustrial,Otros,511663594.18292683
+622701000,60.02,2,apartamento,Bogotá,Alameda,Otros,511663594.18292683
+261554459,34.44,1,apartamento,Bogotá,Puente aranda,Otros,511663594.18292683
+991146000,55.2,1,apartamento,Bogotá,La cabrera,Otros,511663594.18292683
+255000000,40.3,1,apartamento,Bogotá,Aldea,Otros,511663594.18292683
+205972130,26.0,1,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+249820000,45.42,2,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+205972130,26.0,1,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+551670000,62.62,2,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+490000000,43.0,2,apartamento,Bogotá,Centro Internacional,Otros,511663594.18292683
+194690000,40.67,1,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+520000000,48.0,1,apartamento,Bogotá,La felicidad,La felicidad,571493331.6666666
+410386000,67.41,3,apartamento,Bogotá,El tintal,El tintal,320057200.0
+240930000,44.32,1,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+280000000,36.58,1,apartamento,Bogotá,Las nieves,Otros,511663594.18292683
+607914000,78.35,2,apartamento,Bogotá,Ciudad alsacia,Otros,511663594.18292683
+607914000,78.35,2,apartamento,Bogotá,Ciudad alsacia,Otros,511663594.18292683
+338000000,29.21,1,apartamento,Bogotá,Santa Barbara,Otros,511663594.18292683
+272600000,44.63,2,apartamento,Bogotá,San francisco,Otros,511663594.18292683
+345765000,32.93,1,apartamento,Bogotá,Chapinero,Otros,511663594.18292683
+213525000,36.0,1,apartamento,Bogotá,Restrepo occidental,Otros,511663594.18292683
+239260050,39.42,1,apartamento,Bogotá,Ciudad jardin sur,Otros,511663594.18292683
+229000000,31.3,1,apartamento,Bogotá,Paloquemao,Otros,511663594.18292683
+309497000,30.5,1,apartamento,Bogotá,La Calleja,Otros,511663594.18292683
+477072000,40.53,1,apartamento,Bogotá,Pasadena,Otros,511663594.18292683
+375000000,25.09,1,apartamento,Bogotá,Chico norte,Otros,511663594.18292683
+252897900,40.0,1,apartamento,Bogotá,El vergel oriental,Otros,511663594.18292683
+217000000,31.0,1,apartamento,Bogotá,Carvajal,Otros,511663594.18292683
+673141950,61.04,2,apartamento,Bogotá,San miguel,Otros,511663594.18292683
+249035000,40.3,1,apartamento,Bogotá,Suba,Otros,511663594.18292683
+456811000,78.17,2,apartamento,Bogotá,Tintala,Otros,511663594.18292683
+287608000,38.81,1,apartamento,Bogotá,Centro narino,Otros,511663594.18292683
+549579600,59.92,2,apartamento,Bogotá,La felicidad,La felicidad,571493331.6666666
+611000000,64.5,2,apartamento,Bogotá,Montevideo,Otros,511663594.18292683
+203994450,20.61,1,apartamento,Bogotá,Palermo,Otros,511663594.18292683
+680597400,86.59,2,apartamento,Bogotá,Bogotá,Otros,511663594.18292683
+412419000,63.82,2,apartamento,Bogotá,Nueva Castilla,Otros,511663594.18292683
+213525000,35.19,1,apartamento,Bogotá,Restrepo,Otros,511663594.18292683
+213525000,35.7,1,apartamento,Bogotá,Restrepo,Otros,511663594.18292683
+2259370000,176.08,5,apartamento,Bogotá,Usaquen,Otros,511663594.18292683
+2259370000,176.08,5,apartamento,Bogotá,Usaquen,Otros,511663594.18292683
+195000000,48.0,1,apartamento,Bogotá,Granjas san pablo,Otros,511663594.18292683
+213525000,33.92,1,apartamento,Bogotá,Restrepo,Otros,511663594.18292683
+149467500,34.0,1,apartamento,Bogotá,Country Sur,Otros,511663594.18292683
+540203700,59.35,2,apartamento,Bogotá,La felicidad,La felicidad,571493331.6666666
+330000000,22.0,1,apartamento,Bogotá,Engativá,Engativá,476028571.4285714
+236203000,35.71,1,apartamento,Bogotá,Puente aranda,Otros,511663594.18292683
+502591000,62.75,2,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+614260000,66.2,2,apartamento,Bogotá,San jose de bavaria,Otros,511663594.18292683
+575464000,64.43,2,apartamento,Bogotá,Ciudad alsacia,Otros,511663594.18292683
+230607000,42.0,1,apartamento,Bogotá,Villemar,Otros,511663594.18292683
+736096690,80.72,2,apartamento,Bogotá,La felicidad,La felicidad,571493331.6666666
+220000000,43.46,1,apartamento,Bogotá,Los alpes,Otros,511663594.18292683
+353907000,56.76,2,apartamento,Bogotá,Nueva Castilla,Otros,511663594.18292683
+927800000,53.0,2,apartamento,Bogotá,Santa ana oriental,Otros,511663594.18292683
+232740000,30.6,1,apartamento,Bogotá,Toberin,Otros,511663594.18292683
+559000000,69.0,2,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+504000000,81.0,2,apartamento,Bogotá,Engativá,Engativá,476028571.4285714
+850900000,83.0,2,apartamento,Bogotá,Engativá,Engativá,476028571.4285714
+688700000,57.62,2,apartamento,Bogotá,Cedritos,Otros,511663594.18292683
+464100000,50.0,1,apartamento,Bogotá,La felicidad,La felicidad,571493331.6666666
+184900000,42.56,1,apartamento,Bogotá,Campo verde,Otros,511663594.18292683
+470000000,59.5,2,apartamento,Bogotá,Santa teresa,Otros,511663594.18292683
+216270000,50.56,2,apartamento,Bogotá,Campo verde,Otros,511663594.18292683
+448100000,60.78,2,apartamento,Bogotá,Américas Central,Otros,511663594.18292683
+236600000,44.0,1,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+620000000,72.0,2,apartamento,Bogotá,Engativá,Engativá,476028571.4285714
+558194000,56.18,2,apartamento,Bogotá,Toberin,Otros,511663594.18292683
+250000000,26.33,1,apartamento,Bogotá,Chapinero,Otros,511663594.18292683
+362234000,61.15,2,apartamento,Bogotá,El tintal,El tintal,320057200.0
+618980000,73.0,2,apartamento,Bogotá,La felicidad,La felicidad,571493331.6666666
+521000000,74.0,2,apartamento,Bogotá,Engativá,Engativá,476028571.4285714
+530000000,65.0,2,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+750000000,62.0,2,apartamento,Bogotá,Altos de Bella Suiza,Otros,511663594.18292683
+232740000,37.26,1,apartamento,Bogotá,El tintal,El tintal,320057200.0
+426000000,32.0,1,apartamento,Bogotá,La Floresta,Otros,511663594.18292683
+217110000,44.55,1,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+232740000,34.68,1,apartamento,Bogotá,El tintal,El tintal,320057200.0
+674900000,89.0,2,apartamento,Bogotá,Américas Central,Otros,511663594.18292683
+635000000,79.0,2,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+581200000,61.01,2,apartamento,Bogotá,Belalcazar,Otros,511663594.18292683
+164999000,27.5,1,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+193953000,54.08,2,apartamento,Bogotá,Porvenir,Otros,511663594.18292683
+150000000,22.6,1,apartamento,Bogotá,La Candelaria,Otros,511663594.18292683
+164999000,27.5,1,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+637507000,65.57,2,apartamento,Bogotá,Prados de la Sabana,Otros,511663594.18292683
+1877754000,167.94,5,apartamento,Bogotá,Lagos de Cordoba,Otros,511663594.18292683
+190749000,36.0,1,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+432359000,52.3,2,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+190749000,36.0,1,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+1650000000,165.0,5,apartamento,Bogotá,Suba cerros,Otros,511663594.18292683
+229310000,50.6,2,apartamento,Bogotá,Costa rica,Otros,511663594.18292683
+229310000,50.6,2,apartamento,Bogotá,Costa rica,Otros,511663594.18292683
+139646000,47.2,1,apartamento,Bogotá,Porvenir,Otros,511663594.18292683
+290500000,26.5,1,apartamento,Bogotá,La Floresta,Otros,511663594.18292683
+193300000,46.29,2,apartamento,Bogotá,Engativá,Engativá,476028571.4285714
+1075565000,99.41,3,apartamento,Bogotá,Lagos de Cordoba,Otros,511663594.18292683
+678700000,113.0,3,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+914216000,70.0,2,apartamento,Bogotá,Suba,Otros,511663594.18292683
+313000000,41.0,2,apartamento,Bogotá,Engativá,Engativá,476028571.4285714
+263000000,42.0,1,apartamento,Bogotá,Ricaurte,Otros,511663594.18292683
+315000000,66.0,2,apartamento,Bogotá,Samore,Otros,511663594.18292683
+3753300000,281.0,4,apartamento,Bogotá,Chapinero,Otros,511663594.18292683
+232740000,30.78,2,apartamento,Bogotá,Fontibon,Fontibon,277783833.3333333
+362186000,51.93,2,apartamento,Bogotá,El tintal,El tintal,320057200.0
+225000000,51.0,1,apartamento,Bogotá,Bosa,Otros,511663594.18292683
+225303000,44.0,1,apartamento,Bogotá,Lagos de Torca,Lagos de Torca,423845584.4444444
+433500000,70.02,2,apartamento,Bogotá,San victorino,Otros,511663594.18292683
+170820000,54.08,2,apartamento,Bogotá,Porvenir,Otros,511663594.18292683
+139646000,47.14,1,apartamento,Bogotá,Bogotá,Otros,511663594.18292683
+139646000,47.14,1,apartamento,Bogotá,Bogotá,Otros,511663594.18292683
+480704000,46.27,1,apartamento,Bucaramanga,El tejar,Otros,818829363.6363636
+469320000,55.35,2,apartamento,Bucaramanga,La victoria,Otros,818829363.6363636
+263970000,44.17,1,apartamento,Bucaramanga,Diamante 2,Otros,818829363.6363636
+365000000,63.58,2,apartamento,Bucaramanga,Diamante 2,Otros,818829363.6363636
+400000000,60.0,2,apartamento,Bucaramanga,Antiguo Campestre,Otros,818829363.6363636
+398000000,70.28,2,apartamento,Bucaramanga,Diamante 2,Otros,818829363.6363636
+1157086000,122.37,4,apartamento,Bucaramanga,Comuna 16 - lagos del cacique,Otros,818829363.6363636
+246400000,60.67,2,apartamento,Bucaramanga,Nuevo Sotomayor,Otros,818829363.6363636
+2450111000,273.9,5,apartamento,Bucaramanga,El tejar,Otros,818829363.6363636
+1595725000,186.8,6,apartamento,Bucaramanga,El tejar,Otros,818829363.6363636
+1180807000,116.1,4,apartamento,Bucaramanga,El tejar,Otros,818829363.6363636
+1250000000,173.0,4,casa,Cajicá,Chuntame,Otros,556423915.25
+856296783,97.19,3,casa,Cajicá,Calahorra,Otros,556423915.25
+938000000,98.0,2,casa,Cajicá,Chuntame,Otros,556423915.25
+232395650,45.0,2,apartamento,Cajicá,Centro,Otros,556423915.25
+232395650,45.0,2,apartamento,Cajicá,Centro,Otros,556423915.25
+277499000,56.5,2,apartamento,Cajicá,Chuntame,Otros,556423915.25
+670000000,90.0,3,apartamento,Cajicá,El misterio,Otros,556423915.25
+670000000,90.0,3,apartamento,Cajicá,El misterio,Otros,556423915.25
+263499900,56.0,2,apartamento,Cajicá,Chuntame,Otros,556423915.25
+530000000,72.0,2,apartamento,Cajicá,Hacienda Fontanar,Otros,556423915.25
+452000000,64.0,2,apartamento,Cajicá,Calahorra,Otros,556423915.25
+305000000,56.0,2,apartamento,Cajicá,Centro,Otros,556423915.25
+360548000,73.27,2,apartamento,Cali,Villa Fatima,Otros,407339227.1707317
+482000000,106.47,3,casa,Cali,El Castillo,Otros,407339227.1707317
+480460000,80.16,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+419197000,70.83,2,apartamento,Cali,Senderos del Lili,Otros,407339227.1707317
+517172000,72.68,2,apartamento,Cali,San fernando viejo,Otros,407339227.1707317
+253306000,50.0,1,apartamento,Cali,Industrial,Otros,407339227.1707317
+553070000,62.3,2,apartamento,Cali,La hacienda,Otros,407339227.1707317
+324042947,61.67,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+237000000,36.36,1,apartamento,Cali,Pance,Otros,407339227.1707317
+55000000,30.0,1,apartamento,Cali,Granada,Otros,407339227.1707317
+262041000,62.0,2,apartamento,Cali,Cachipay,Otros,407339227.1707317
+138366000,43.01,1,apartamento,Cali,Sector alto jordan,Otros,407339227.1707317
+232740000,52.93,2,apartamento,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+213525000,61.43,2,apartamento,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+404013000,67.4,2,apartamento,Cali,Mayapan las vegas,Otros,407339227.1707317
+249538000,65.23,1,apartamento,Cali,Cascajal,Otros,407339227.1707317
+375000000,67.0,2,apartamento,Cali,Prados del norte,Otros,407339227.1707317
+235595700,55.44,1,apartamento,Cali,Villa Fatima,Otros,407339227.1707317
+214000000,59.14,1,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+486856063,90.57,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+171460575,44.62,1,apartamento,Cali,Ciudadela del rio,Otros,407339227.1707317
+577808937,103.42,3,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+213525000,60.48,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+271534000,44.41,1,apartamento,Cali,Santa Anita,Otros,407339227.1707317
+414460954,31.06,1,apartamento,Cali,Santa monica,Otros,407339227.1707317
+692600000,87.0,2,apartamento,Cali,Ciudad los alamos,Otros,407339227.1707317
+433900000,84.9,3,casa,Cali,El Castillo,Otros,407339227.1707317
+215900000,55.0,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+208650000,64.32,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+221169000,62.36,1,apartamento,Cali,Villa Fatima,Otros,407339227.1707317
+812700000,173.55,3,apartamento,Cali,El Castillo,Otros,407339227.1707317
+202690570,58.35,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+482622608,73.9,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+339841875,45.1,1,casa,Cali,Cascajal,Otros,407339227.1707317
+535000000,92.26,1,apartamento,Cali,Villa Fatima,Otros,407339227.1707317
+350000000,58.11,2,apartamento,Cali,La flora,Otros,407339227.1707317
+611100000,65.0,2,apartamento,Cali,Pance,Otros,407339227.1707317
+689428201,99.61,2,apartamento,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+202690570,63.02,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+199517824,44.62,1,apartamento,Cali,El poblado i,Otros,407339227.1707317
+327325883,68.66,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+419194660,39.0,1,apartamento,Cali,Nueva tequendama,Otros,407339227.1707317
+499774134,80.0,2,apartamento,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+432963000,66.17,2,apartamento,Cali,La Selva,Otros,407339227.1707317
+195000000,56.19,2,apartamento,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+554802242,79.75,3,apartamento,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+589122000,85.16,2,apartamento,Cali,Santa isabel,Otros,407339227.1707317
+512000710,84.59,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+558965000,94.34,1,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+739055000,90.16,2,apartamento,Cali,Ciudad jardin,Otros,407339227.1707317
+646864305,106.52,2,apartamento,Cali,Bochalema,Bochalema,376960172.8666667
+833159709,120.94,4,casa,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+464961935,108.24,2,casa,Cali,El Castillo,Otros,407339227.1707317
+410600000,84.62,2,casa,Cali,Ciudad Campestre,Otros,407339227.1707317
+400000000,77.0,2,apartamento,Cali,Cachipay,Otros,407339227.1707317
+1170000000,124.81,4,apartamento,Cali,Pance,Otros,407339227.1707317
+500000000,48.0,1,apartamento,Cali,Santa monica,Otros,407339227.1707317
+390000000,53.0,2,casa,Cali,TierraLinda,Otros,407339227.1707317
+255000000,30.0,1,apartamento,Cali,Pance,Otros,407339227.1707317
+511500327,75.25,2,apartamento,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+232000000,53.0,2,apartamento,Cali,Aguacatal,Otros,407339227.1707317
+420434000,77.38,2,apartamento,Cali,Senderos del Lili,Otros,407339227.1707317
+420434000,77.38,2,apartamento,Cali,Senderos del Lili,Otros,407339227.1707317
+262012791,54.59,1,apartamento,Cali,El hormiguero,Otros,407339227.1707317
+232740000,62.48,2,apartamento,Cali,Valle del Lili,Valle del Lili,440296623.6666667
+160000000,66.0,2,casa,Candelaria,Villagorgona,Otros,179310498.0
+147000000,47.67,2,casa,Candelaria,Villagorgona,Otros,179310498.0
+131673750,50.4,1,apartamento,Candelaria,Villagorgona,Otros,179310498.0
+237653325,45.58,2,casa,Candelaria,El carmelo,Otros,179310498.0
+220225415,49.68,2,casa,Candelaria,Arenal,Otros,179310498.0
+323941000,54.1,2,apartamento,Cartagena,Ceballos,Otros,454595396.0
+338071000,65.53,2,apartamento,Cartagena,Providencia,Providencia,257130583.33333334
+579025000,83.0,2,apartamento,Cartagena,La Boquilla,Otros,454595396.0
+309000000,50.25,2,apartamento,Cartagena,La Boquilla,Otros,454595396.0
+213525000,63.15,2,apartamento,Cartagena,La esperanza,Otros,454595396.0
+1260000000,125.88,2,apartamento,Cartagena,Serena del Mar,Otros,454595396.0
+550000000,82.98,2,apartamento,Cartagena,La boquilla,Otros,454595396.0
+195000000,53.96,1,apartamento,Cartagena,La esperanza,Otros,454595396.0
+550238000,73.17,2,apartamento,Cartagena,Serena del Mar,Otros,454595396.0
+165102000,41.78,2,apartamento,Cartagena,La carolina,Otros,454595396.0
+930805000,110.45,2,apartamento,Cartagena,Marbella,Otros,454595396.0
+276500000,52.69,2,apartamento,Cartagena,Bellavista,Otros,454595396.0
+213525000,65.02,2,apartamento,Cartagena,La esperanza,Otros,454595396.0
+232740000,66.72,2,apartamento,Cartagena,Providencia,Providencia,257130583.33333334
+590000000,91.42,3,apartamento,Cartagena,Crespo,Otros,454595396.0
+527446712,66.87,2,apartamento,Cartagena,La Boquilla,Otros,454595396.0
+706000000,61.0,2,apartamento,Cartagena,La boquilla,Otros,454595396.0
+187752500,51.0,1,apartamento,Cartagena,Providencia,Providencia,257130583.33333334
+340000000,77.0,2,apartamento,Cartagena,Providencia,Providencia,257130583.33333334
+515000000,73.0,2,apartamento,Cartagena,Pie de popa toril,Otros,454595396.0
+480000000,60.0,2,apartamento,Cartagena,La boquilla,Otros,454595396.0
+231670000,60.69,2,apartamento,Cartagena,Providencia,Providencia,257130583.33333334
+349146000,63.05,2,apartamento,Cartagena,El golf,Otros,454595396.0
+459049000,84.67,2,apartamento,Cartagena,Ternera,Otros,454595396.0
+320000000,41.0,1,apartamento,Cartagena,La boquilla,Otros,454595396.0
+300000000,58.5,2,apartamento,Cartagena,San bernardo de asis,Otros,454595396.0
+187796000,53.89,1,apartamento,Cartagena,La esperanza,Otros,454595396.0
+212550000,57.0,1,apartamento,Cartagena,Providencia,Providencia,257130583.33333334
+265803259,47.63,2,apartamento,Dosquebradas,La pradera,Otros,246767393.16666666
+171530600,46.77,2,apartamento,Dosquebradas,El japon,Otros,246767393.16666666
+310328000,46.77,2,apartamento,Dosquebradas,La badea,Otros,246767393.16666666
+252300000,50.91,2,apartamento,Dosquebradas,Ub. montebonito et. ii,Otros,246767393.16666666
+206772500,51.26,2,apartamento,Dosquebradas,Frailes,Otros,246767393.16666666
+273870000,50.91,2,apartamento,Dosquebradas,Ub. montebonito et. ii,Otros,246767393.16666666
+421009000,65.68,2,apartamento,Floridablanca,Cañaveral,Otros,442166200.0
+597712000,89.24,2,apartamento,Floridablanca,Cañaveral,Otros,442166200.0
+503372000,76.5,2,apartamento,Floridablanca,Bosques molinos,Otros,442166200.0
+424762000,75.69,2,apartamento,Floridablanca,Cañaveral,Otros,442166200.0
+263976000,54.73,2,apartamento,Floridablanca,Ruitoque,Otros,442166200.0
+192172500,51.07,2,apartamento,Ibagué,Cañaveral et. i,Otros,224587529.33333334
+156932676,42.58,1,apartamento,Ibagué,Picaleña,Otros,224587529.33333334
+473590000,90.99,2,apartamento,Ibagué,Picaleña y Mirolindo,Otros,224587529.33333334
+127530000,40.0,1,apartamento,Ibagué,Zona industrial,Otros,224587529.33333334
+191300000,56.0,2,apartamento,Ibagué,Zona industrial,Otros,224587529.33333334
+206000000,55.0,1,apartamento,Ibagué,Picaleña y Mirolindo,Otros,224587529.33333334
+262041000,60.65,1,apartamento,Jamundí,La Morada,Otros,406497348.73333335
+343968901,72.61,2,casa,Jamundí,Zona Norte,Otros,406497348.73333335
+377119997,80.92,3,casa,Jamundí,La Morada,Otros,406497348.73333335
+334200000,80.47,2,casa,Jamundí,Rincon de las garzas,Otros,406497348.73333335
+715000000,144.26,2,casa,Jamundí,Alfaguara,Otros,406497348.73333335
+274088464,66.21,2,apartamento,Jamundí,Ciudad Country,Otros,406497348.73333335
+209679900,62.08,2,apartamento,Jamundí,Cn. paisaje de pangola,Otros,406497348.73333335
+553209000,97.25,2,apartamento,Jamundí,Porerito,Otros,406497348.73333335
+184900000,63.08,2,apartamento,Jamundí,Cr. los naranjos,Otros,406497348.73333335
+563500000,134.58,3,casa,Jamundí,El Castillo,Otros,406497348.73333335
+401920000,90.73,2,apartamento,Jamundí,Parque Natura,Otros,406497348.73333335
+416000000,92.66,2,casa,Jamundí,La Morada,Otros,406497348.73333335
+225500000,58.95,2,casa,Jamundí,La Morada,Otros,406497348.73333335
+565232969,116.57,3,casa,Jamundí,Ciudad Country,Otros,406497348.73333335
+671100000,140.3,3,casa,Jamundí,El Castillo,Otros,406497348.73333335
+228500000,50.0,2,apartamento,La Estrella,La Tablaza,Otros,463246160.0
+489960800,57.96,2,apartamento,La Estrella,Toledo,Otros,463246160.0
+443520000,129.6,3,casa,La Estrella,La ferreira,Otros,463246160.0
+706694000,93.29,2,apartamento,La Estrella,Yarumito,Otros,463246160.0
+447556000,56.68,2,apartamento,La Estrella,La Aldea,Otros,463246160.0
+208600000,58.15,2,apartamento,Madrid,La Prosperidad,Otros,247305000.0
+333900000,57.57,2,apartamento,Madrid,San jose,Otros,247305000.0
+225000000,58.2,2,apartamento,Madrid,La Prosperidad,Otros,247305000.0
+213525000,52.0,1,apartamento,Madrid,Zona franca de occidente,Otros,247305000.0
+255500000,49.0,1,apartamento,Madrid,Zona franca de occidente,Otros,247305000.0
+1785352500,115.76,3,apartamento,Medellín,Cola del Zorro,Otros,733056055.7692307
+1729239185,120.62,3,apartamento,Medellín,El Poblado,El Poblado,1011245935.625
+676260000,62.0,2,apartamento,Medellín,El Poblado,El Poblado,1011245935.625
+507070000,36.2,1,apartamento,Medellín,El Poblado,El Poblado,1011245935.625
+2077390500,132.31,3,apartamento,Medellín,El Poblado,El Poblado,1011245935.625
+1309282183,86.37,3,apartamento,Medellín,Castropol,Otros,733056055.7692307
+578152254,71.18,2,apartamento,Medellín,Viviendas del Sur,Otros,733056055.7692307
+890754300,51.03,2,apartamento,Medellín,El Poblado,El Poblado,1011245935.625
+646253500,59.7,2,apartamento,Medellín,El Poblado,El Poblado,1011245935.625
+362000000,30.0,1,apartamento,Medellín,Calasanz,Otros,733056055.7692307
+597000000,49.48,1,apartamento,Medellín,Ciudad del Río,Otros,733056055.7692307
+353927000,30.62,1,apartamento,Medellín,Laureles,Otros,733056055.7692307
+295600000,36.8,1,apartamento,Medellín,Calasanz parte alta,Otros,733056055.7692307
+276000000,21.0,1,apartamento,Medellín,Laureles,Otros,733056055.7692307
+431000000,68.42,2,apartamento,Medellín,Robledo,Otros,733056055.7692307
+463600000,57.93,2,apartamento,Medellín,Loma del Indio,Otros,733056055.7692307
+1129420000,69.85,2,apartamento,Medellín,Santa maria de los angeles,Otros,733056055.7692307
+940000000,96.0,3,apartamento,Medellín,El Poblado,El Poblado,1011245935.625
+1225190500,78.0,2,apartamento,Medellín,Santa maria de los angeles,Otros,733056055.7692307
+623000000,56.0,2,apartamento,Medellín,El Poblado,El Poblado,1011245935.625
+723204288,90.23,3,apartamento,Medellín,Vía Las Palmas,Otros,733056055.7692307
+418684644,58.63,2,apartamento,Pereira,El campin i-ii,Otros,625526584.875
+826000000,128.38,3,casa,Pereira,Cerritos,Cerritos,573473862.8
+615400000,79.0,2,apartamento,Pereira,Condina,Otros,625526584.875
+495000000,72.81,2,apartamento,Pereira,La glorieta,Otros,625526584.875
+608336157,81.1,3,apartamento,Pereira,Cerritos,Cerritos,573473862.8
+608336157,81.1,3,apartamento,Pereira,Cerritos,Cerritos,573473862.8
+603400000,83.81,3,casa,Pereira,Cerritos,Cerritos,573473862.8
+221297000,37.3,1,apartamento,Pereira,Cerritos,Cerritos,573473862.8
+1076500000,170.03,3,casa,Pereira,Morelia,Otros,625526584.875
+387000000,63.62,2,apartamento,Pereira,El dorado,Otros,625526584.875
+808800000,117.0,2,casa,Pereira,Combia,Otros,625526584.875
+394028035,65.5,2,apartamento,Pereira,Galicia,Otros,625526584.875
+808800000,117.0,2,casa,Pereira,Combia,Otros,625526584.875
+170820000,56.25,2,apartamento,Piedecuesta,Villa paraiso,Otros,498281000.0
+391475000,75.4,2,apartamento,Piedecuesta,Ruitoque,Otros,498281000.0
+873643000,136.06,3,casa,Piedecuesta,La españolita,Otros,498281000.0
+873643000,136.06,3,casa,Piedecuesta,La españolita,Otros,498281000.0
+445428000,74.14,2,apartamento,Piedecuesta,La mata,Otros,498281000.0
+232740000,41.41,1,apartamento,Piedecuesta,Guatiguara,Guatiguara,266445400.0
+139646000,50.18,2,apartamento,Piedecuesta,Guatiguara,Guatiguara,266445400.0
+232740000,55.05,2,apartamento,Piedecuesta,Guatiguara,Guatiguara,266445400.0
+232740000,55.05,2,apartamento,Piedecuesta,Guatiguara,Guatiguara,266445400.0
+199000000,51.02,2,apartamento,Piedecuesta,Centro,Otros,498281000.0
+533958000,92.69,3,apartamento,Piedecuesta,Ruitoque,Otros,498281000.0
+494361000,90.0,2,apartamento,Piedecuesta,Guatiguara,Guatiguara,266445400.0
+475748921,58.25,2,apartamento,Rionegro,Santa ana,Otros,632664784.2
+218000000,48.0,2,apartamento,Rionegro,El porvenir,Otros,632664784.2
+1220369000,78.62,2,apartamento,Rionegro,Llano Grande,Otros,632664784.2
+656250000,60.75,2,apartamento,Rionegro,El porvenir,Otros,632664784.2
+592956000,75.0,2,apartamento,Rionegro,San Antonio de Pereira,Otros,632664784.2
+583738874,64.6,2,apartamento,Sabaneta,Las Lomitas,Otros,552393463.0
+417962500,62.0,2,apartamento,Sabaneta,Monteazul,Otros,552393463.0
+583738874,64.6,2,apartamento,Sabaneta,Las Lomitas,Otros,552393463.0
+630100000,85.86,3,apartamento,Sabaneta,El carmelo,Otros,552393463.0
+519428000,84.0,3,apartamento,Sabaneta,Vegas de la doctora,Otros,552393463.0
+548151993,68.33,2,apartamento,Sabaneta,Monteazul,Otros,552393463.0
+583634000,84.12,3,apartamento,Sabaneta,Lagos de la doctora,Otros,552393463.0
+385200000,36.0,1,apartamento,Santa Marta,Rodadero y Gaira,Otros,368705777.3684211
+545812000,37.74,1,apartamento,Santa Marta,Pozos Colorados,Pozos Colorados,612674178.75
+350700000,50.1,1,apartamento,Santa Marta,Vista hermosa,Otros,368705777.3684211
+420000000,38.6,1,apartamento,Santa Marta,Cerro la gloria,Otros,368705777.3684211
+420000000,38.6,1,apartamento,Santa Marta,Cerro la gloria,Otros,368705777.3684211
+273000000,53.69,2,apartamento,Santa Marta,Ub libano 2000,Otros,368705777.3684211
+355742894,32.27,1,apartamento,Santa Marta,URBANIZACION SALGUERO,Otros,368705777.3684211
+210000000,24.0,1,apartamento,Santa Marta,Rodadero,Otros,368705777.3684211
+477848000,35.79,1,apartamento,Santa Marta,Pozos Colorados,Pozos Colorados,612674178.75
+140000000,53.4,1,apartamento,Santa Marta,URBANIZACION LIBANO 2000,Otros,368705777.3684211
+294719760,36.0,1,apartamento,Santa Marta,Gaira mar,Otros,368705777.3684211
+353250800,32.83,1,apartamento,Santa Marta,Bello horizonte,Otros,368705777.3684211
+273000000,67.69,2,apartamento,Santa Marta,URBANIZACION CANARIAS,Otros,368705777.3684211
+314748500,32.0,1,apartamento,Santa Marta,Rodadero,Otros,368705777.3684211
+889947816,80.5,3,apartamento,Santa Marta,URBANIZACION SALGUERO,Otros,368705777.3684211
+226000000,63.24,2,apartamento,Santa Marta,CONJUNTO RESIDENCIAL EL NOGAL,Otros,368705777.3684211
+1168747000,94.29,2,apartamento,Santa Marta,Pozos Colorados,Pozos Colorados,612674178.75
+326498220,30.98,1,apartamento,Santa Marta,Pozos Colorados,Pozos Colorados,612674178.75
+326498220,30.98,1,apartamento,Santa Marta,Pozos Colorados,Pozos Colorados,612674178.75
+543990000,37.0,1,apartamento,Santa Marta,Pozos Colorados,Pozos Colorados,612674178.75
+451000000,36.0,1,apartamento,Santa Marta,Rodadero,Otros,368705777.3684211
+1053000000,57.5,2,apartamento,Santa Marta,Pozos Colorados,Pozos Colorados,612674178.75
+458999990,35.0,1,apartamento,Santa Marta,Pozos Colorados,Pozos Colorados,612674178.75
+349000000,32.14,1,apartamento,Santa Marta,Rodadero sur,Otros,368705777.3684211
+334800000,46.49,2,apartamento,Santa Marta,Los cardonales,Otros,368705777.3684211
+788800000,143.32,4,casa,Santa Marta,Vista hermosa sur,Otros,368705777.3684211
+175500000,62.1,2,apartamento,Santa Marta,Cerro san fernando,Otros,368705777.3684211
+170820000,48.07,2,apartamento,Soacha,Zona industrial santa ana,Otros,182940000.0
+220000000,62.5,1,apartamento,Soacha,Ciudad verde,Ciudad verde,211600000.0
+232300000,56.0,1,apartamento,Soacha,Ciudad verde,Ciudad verde,211600000.0
+232300000,56.0,1,apartamento,Soacha,Ciudad verde,Ciudad verde,211600000.0
+195000000,53.95,2,apartamento,Soacha,Ciudad verde,Ciudad verde,211600000.0
+189000000,57.9,1,apartamento,Soacha,Rincon de santafe,Otros,182940000.0
+189000000,57.9,1,apartamento,Soacha,Rincon de santafe,Otros,182940000.0
+195000000,62.4,2,apartamento,Soacha,Ciudad verde,Ciudad verde,211600000.0
+195000000,62.4,2,apartamento,Soacha,Ciudad verde,Ciudad verde,211600000.0
+229070000,46.0,1,apartamento,Soledad,Las marinas,Otros,173268000.0
+172750000,43.7,1,apartamento,Soledad,Estadio,Otros,173268000.0
+127400000,37.81,2,apartamento,Soledad,El manantial,Otros,173268000.0
+162920000,37.81,2,apartamento,Soledad,Ub. portal de los manantiales,Otros,173268000.0
+174200000,52.07,2,apartamento,Soledad,El manantial,Otros,173268000.0
+209000000,57.0,1,apartamento,Villavicencio,Caños negros,Otros,451514940.0
+1092580000,134.81,3,apartamento,Villavicencio,Esperanza 8,Otros,451514940.0
+346653000,59.0,2,apartamento,Villavicencio,Cr gratamira,Cr gratamira,307031400.0
+195000000,54.0,1,apartamento,Villavicencio,Comuna 8,Otros,451514940.0
+989000000,139.14,4,apartamento,Villavicencio,Comuna 7,Otros,451514940.0
+458000000,55.0,1,apartamento,Villavicencio,Trapiche,Otros,451514940.0
+152338000,31.0,1,apartamento,Villavicencio,Comuna 8,Otros,451514940.0
+192200000,56.0,1,apartamento,Villavicencio,Caños negros,Otros,451514940.0
+483152000,79.0,2,apartamento,Villavicencio,Leon xii,Otros,451514940.0
+402052000,80.0,2,apartamento,Villavicencio,Cr gratamira,Cr gratamira,307031400.0
+402052000,80.0,2,apartamento,Villavicencio,Cr gratamira,Cr gratamira,307031400.0
+192200000,52.0,1,apartamento,Villavicencio,Cr gratamira,Cr gratamira,307031400.0
+430000000,75.0,2,apartamento,Villavicencio,Mt centauros,Otros,451514940.0
+192200000,52.0,1,apartamento,Villavicencio,Cr gratamira,Cr gratamira,307031400.0
+313879400,43.4,1,apartamento,Villavicencio,Caudal norte oriental,Otros,451514940.0
+299000000,63.0,2,apartamento,Zipaquirá,Las villas,Otros,244111131.0
+278081048,61.57,2,apartamento,Zipaquirá,Las villas,Otros,244111131.0
+232740000,43.54,2,apartamento,Zipaquirá,Hacienda la quinta ii,Otros,244111131.0
+206999000,54.5,2,apartamento,Zipaquirá,San rafael,Otros,244111131.0
+313329000,72.89,2,apartamento,Zipaquirá,Las villas,Otros,244111131.0
+195000000,53.88,2,apartamento,Zipaquirá,Algarra iii,Otros,244111131.0
+232740000,51.09,2,apartamento,Zipaquirá,Algarra iii,Otros,244111131.0
+195000000,50.7,2,apartamento,Zipaquirá,Las villas,Otros,244111131.0
