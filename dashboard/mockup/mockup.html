@@ -35,8 +35,13 @@
     }
     header h1 {
       margin: 0;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 600;
+    }
+    .subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 16px;
     }
     .wrapper {
       padding: 32px;
@@ -53,10 +58,15 @@
     .screen-title {
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .section-eyebrow {
       text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-size: 13px;
+      font-weight: 600;
       color: var(--muted);
-      letter-spacing: 1.5px;
     }
     .form-grid {
       display: grid;
@@ -71,6 +81,11 @@
       display: block;
       margin-bottom: 6px;
     }
+    .helper-text {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
     select,
     input {
       width: 100%;
@@ -80,7 +95,8 @@
       font-size: 16px;
       background: #fff;
     }
-    button {
+    button,
+    .cta-secondary {
       background: var(--primary);
       color: #fff;
       border: none;
@@ -90,10 +106,18 @@
       font-weight: 600;
       cursor: pointer;
       transition: opacity 0.2s ease;
-      width: 220px;
+      width: 260px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     button:hover {
       opacity: 0.9;
+    }
+    .cta-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
     }
     .screen-2-layout {
       display: grid;
@@ -128,6 +152,9 @@
       margin: 0;
       color: var(--muted);
       line-height: 1.6;
+    }
+    .muted {
+      color: var(--muted);
     }
     .charts {
       display: grid;
@@ -172,12 +199,14 @@
 </head>
 <body>
   <header>
-    <h1>AvaluaTuHome — Mockup UI</h1>
+    <h1>AvaluaTuHome</h1>
+    <p class="subtitle">Calculadora interactiva para estimar el valor de tu inmueble con datos reales del mercado.</p>
   </header>
   <div class="wrapper">
     <section class="screen">
-      <div class="screen-title">Screen 1 · Formulario</div>
-      <p>Esta vista captura la información básica del inmueble y prepara la llamada al modelo.</p>
+      <div class="section-eyebrow">Paso 1 · Cuéntanos del inmueble</div>
+      <div class="screen-title">Describe la propiedad que quieres valorar</div>
+      <p class="muted">Estos datos se enviarán al modelo predictivo y personalizan los comparables que verás más adelante.</p>
       <div class="form-grid">
         <div>
           <label>Ubicación</label>
@@ -186,6 +215,7 @@
             <option>Medellín</option>
             <option>Cali</option>
           </select>
+          <p class="helper-text">Selecciona la ciudad donde se encuentra el inmueble.</p>
         </div>
         <div>
           <label>Tipo de inmueble</label>
@@ -194,25 +224,32 @@
             <option>Casa</option>
             <option>Studio</option>
           </select>
+          <p class="helper-text">Elige la tipología principal para mejorar los comparativos.</p>
         </div>
         <div>
           <label>Área (m²)</label>
           <input type="number" placeholder="Ingresa el área">
+          <p class="helper-text">Usa números enteros, por ejemplo 75.</p>
         </div>
         <div>
           <label>Cuartos</label>
           <input type="number" placeholder="Cantidad de habitaciones">
+          <p class="helper-text">Incluye el estudio si se usa como habitación.</p>
         </div>
         <div>
           <label>Baños</label>
           <input type="number" placeholder="Cantidad de baños">
+          <p class="helper-text">Cuenta baños sociales que sumen valor.</p>
         </div>
       </div>
-      <button>Calcular avalúo</button>
+      <button>Calcular avalúo estimado</button>
+      <p class="cta-note">Obtendrás una estimación preliminar en menos de 5 segundos.</p>
     </section>
 
     <section class="screen">
-      <div class="screen-title">Screen 2 · Resultados & Contexto</div>
+      <div class="section-eyebrow">Paso 2 · Resultado</div>
+      <div class="screen-title">Tu avalúo estimado y contexto del mercado</div>
+      <p class="muted">El valor mostrado es aproximado y se actualizará cuando conectemos la API productiva.</p>
       <div class="screen-2-layout">
         <div class="card">
           <div class="icon-circle">
@@ -220,24 +257,27 @@
               <path d="M12 3l9 8v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V11l9-8z" />
             </svg>
           </div>
-          <p class="muted">El costo de tu inmueble es</p>
+          <p class="muted">Valor estimado</p>
           <div class="price">$250.000.000</div>
           <p><strong>Teniendo en cuenta:</strong></p>
           <ul class="summary-list">
             <li>50 m²</li>
             <li>3 habitaciones</li>
             <li>2 baños</li>
-            <li>Tipo: Apartamento</li>
+            <li>Tipo: Apartamento en Bogotá</li>
           </ul>
+          <p class="helper-text">Cuando el modelo esté desplegado, también mostraremos intervalo de confianza y fecha de actualización.</p>
         </div>
         <div class="charts">
           <div class="chart-card">
-            <h4>Costo vs área en tu ciudad</h4>
-            <div class="chart-placeholder">Scatter plot con línea de tendencia</div>
+            <h4>Relación área vs. precio en tu ciudad</h4>
+            <p class="helper-text">Compara tu inmueble con casos similares registrados el último mes.</p>
+            <div class="chart-placeholder">Visualización: dispersión + línea de tendencia</div>
           </div>
           <div class="chart-card">
-            <h4>Comparativo entre ciudades</h4>
-            <div class="chart-placeholder">Bubble plot por ciudad</div>
+            <h4>Cómo se comportan otras ciudades</h4>
+            <p class="helper-text">Identifica mercados más caros o accesibles para tomar decisiones de inversión.</p>
+            <div class="chart-placeholder">Visualización: bubble plot por ciudad</div>
           </div>
         </div>
       </div>
