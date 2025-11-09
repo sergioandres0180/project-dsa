@@ -13,13 +13,13 @@
 
 
 ## 1. Problema y contexto (Bogotá)
-La estimación del valor comercial de vivienda en **Bogotá** suele apoyarse en comparaciones manuales y criterios subjetivos. Esto introduce variabilidad y tiempos de respuesta elevados para compradores, vendedores y entidades financieras. Con el crecimiento de fuentes abiertas confiables a nivel **ciudad**, es factible construir una **solución analítica** que estandarice y acelere la valoración, con métricas de precisión trazables.
+La estimación del valor comercial de vivienda en **Bogotá** suele apoyarse en comparaciones manuales y criterios subjetivos. Esto introduce variabilidad y tiempos de respuesta elevados para compradores, vendedores y entidades financieras. Con el crecimiento de fuentes abiertas confiables a nivel **ciudad**, es factible construir una **solución analítica** que estandarice y acelere la valoración, con métricas de precisión trazables. La propuesta integra un modelo supervisado con un tablero web para que actores no técnicos consulten avalúos consistentes en segundos.
 
-Esta situación reduce la transparencia y la comparabilidad de los avalúos e impacta la toma de decisiones de hogares, inmobiliarias, aseguradoras y banca hipotecaria. Con este proyecto buscamos disminuir tiempos y sesgos, entregando estimaciones consistentes y explicables para inmuebles en Bogotá, soportadas en datos abiertos verificables.
+Esta situación reduce la transparencia y la comparabilidad de los avalúos e impacta la toma de decisiones de hogares, inmobiliarias, aseguradoras y banca hipotecaria. Con este proyecto buscamos disminuir tiempos y sesgos, entregando estimaciones consistentes y explicables para inmuebles en Bogotá, soportadas en datos abiertos verificables y una interfaz que expone la estimación con su intervalo de error e insights de las variables más influyentes.
 
 
 ## 2. Pregunta de negocio y alcance
-**Pregunta de negocio.** ¿Cómo desarrollar e implementar un **modelo de predicción** (aprendizaje supervisado) que estime con precisión y rapidez el **valor** de un inmueble en **Bogotá** usando variables físicas, de localización y socioeconómicas?
+**Pregunta de negocio.** ¿Cómo desarrollar e implementar un **modelo de predicción** (aprendizaje supervisado) que estime con precisión y rapidez el **valor** de un inmueble en **Bogotá** usando variables físicas, de localización y socioeconómicas, y cómo disponibilizarlo a través de un tablero que encapsule las predicciones, su banda de error y la explicación del modelo?
 
 **Alcance (MVP de esta entrega).**
 - Entradas: *área cubierta*, *número de cuartos*, *tipo de inmueble*, *localidad/barrio*, y otras disponibles en el dataset.
@@ -118,9 +118,11 @@ Se consideran al menos dos familias: (i) **baselines** (Regresión Lineal, Ridge
 
 
 ## 7. Prototipo / Tablero
-- **Entradas:** área, cuartos, tipo, localidad/barrio.
-- **Salida:** precio estimado y bandas ±MAE; importancias de variables (feature importance/SHAP) si aplica.
-- **Estado:** se mantiene la maqueta aprobada; capturas en `docs/`.
+- **Objetivo:** operacionalizar la respuesta a la pregunta de negocio permitiendo que usuarios no técnicos ingresen los datos del inmueble y reciban un avalúo consistente con contexto de mercado.
+- **Entradas:** localidad/barrio (selector alineado con UPZ), tipo de inmueble, área cubierta (m²), número de cuartos y número de baños. Cada campo incluye ayudas visuales para asegurar calidad en la captura.
+- **Salidas:** valor estimado en COP, intervalo ±MAE mostrado como píldora destacada, resumen de características evaluadas, visualización de relación área vs. precio en Bogotá y módulo “Factores que más impactan tu avalúo” (espacio reservado para SHAP/feature importance).
+- **Estado actual:** mockup navegable (`dashboard/mockup/mockup.html`) que define layout, textos y flujo. Puede abrirse con `open dashboard/mockup/mockup.html` o sirviendo la carpeta con `python3 -m http.server 8000`.
+- **Siguiente paso:** conectar el formulario al endpoint `POST /api/v1/avaluo` para poblar el tablero con las predicciones reales y gestionar estados `loading/success/error`.
 
 
 
@@ -128,8 +130,8 @@ Se consideran al menos dos familias: (i) **baselines** (Regresión Lineal, Ridge
 > **Integrantes:** Diego Alejandro Lemus Guzman; Valeria Iglesias Miranda; Sergio Andres Perdomo Murcia; Danilo Suarez Vargas.
 
 - **Datos/EDA:** preparación de cortes Bogotá, diccionario, limpieza básica.
-- **Modelado:** experimentos en MLflow, comparación de modelos y selección.
-- **Tablero:** implementación de la maqueta y conexión al modelo.
+- **Modelado (Valeria Iglesias):** experimentos en MLflow, comparación de modelos y selección (en progreso).
+- **Tablero (Danilo Suarez):** diseño de la experiencia, construcción del mockup y definición de la integración con la API.
 - **Infra/DevOps:** configuración de entorno (EC2/venv), tracking MLflow.
 - **Documentación:** armado de este reporte y evidencias.
 
