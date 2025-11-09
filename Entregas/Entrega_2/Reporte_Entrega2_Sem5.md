@@ -97,18 +97,19 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 
 
 ## 5. Modelos desarrollados y evaluación
-- **Fuente y preparación:** el script `models/models-mlflow.py` consume `Notebooks/inmuebles_bogota 2.csv` (9.5k registros). Se limpian los campos `Valor` y `Área` (remoción de símbolos y log10 para estabilizar varianza) y se generan las columnas `log_valorventa` y `log_marea`. Las variables categóricas `Tipo` y `Barrio` se convierten con `pd.get_dummies`.
-- **Conjunto de entrenamiento:** `X = [Tipo, Habitaciones, Baños, log_marea, Barrio]`, `y = log_valorventa`. Se realiza `train_test_split` 80/20 con semilla 42.
-- **Experimentación:** cada modelo se entrena dentro de un run MLflow (`modelos_inmuebles_bogota`) registrando parámetros, métricas y artefactos (`mlflow.sklearn.log_model`). Esto permite replicar el entrenamiento y comparar resultados.
-- **Modelos evaluados:** baselines (Regresión Lineal, Ridge) y ensambles (Random Forest, LightGBM). Se escogieron porque equilibran interpretabilidad y capacidad de capturar relaciones no lineales.
-- **Pendiente:** ajustar el parámetro inválido `n_jobs` en `LinearRegression` y consolidar las métricas finales (MAE/RMSE en COP) para reportarlas en la próxima iteración.
+- **Fuente y preparación:** el script `models/models-mlflow.py` y el notebook `03_PRUEBA_MODELOS_BOGOTA.ipynb` consumen `inmuebles_bogota 2.csv` (9.5k registros). Se limpian los campos `Valor` y `Área`, se crean `log_valorventa` y `log_marea` para estabilizar la varianza y se codifican `Tipo` y `Barrio` con `pd.get_dummies`.
+- **Conjunto de entrenamiento:** `X = [Tipo, Habitaciones, Baños, log_marea, Barrio]`, `y = log_valorventa`, con partición 80/20 y semilla 42.
+- **Experimentación:** cada modelo registra parámetros, métricas y artefactos en el experimento MLflow `modelos_inmuebles_bogota`, lo que asegura trazabilidad y reproducibilidad.
+- **Resultados:** los ensambles superan a los baselines lineales. Las métricas se reportan en la escala log10 del target, acompañadas del MAPE para facilitar su interpretación.
 
-| Modelo | Features | Hiperparámetros clave | Registro MLflow |
-|---|---|---|---|
-| Regresión lineal | área (log), cuartos, baños, tipo, barrio | default sklearn | `modelo_linearregression` |
-| Ridge | idem | `alpha=4.0` | `modelo_ridge` |
-| Random Forest | idem + interacciones implícitas | `n_estimators=200`, `max_depth=6`, `max_features=8` | `modelo_randomforest` |
-| LightGBM | idem | `num_leaves=31`, `learning_rate=0.01`, `n_estimators=200` | `modelo_lightgbm` |
+| Modelo | Configuración | RMSE (log10) | MAE (log10) | R² | MAPE |
+|---|---|---:|---:|---:|---:|
+| SGD Regressor (baseline) | `log_marea` como única feature, `max_iter=1000` | — | — | — | 1.69 % |
+| Ridge | `alpha=1.0` | 0.1339 | 0.0966 | 0.841 | 1.20 % |
+| LightGBM | `num_leaves=31`, `learning_rate=0.01`, `n_estimators=1000` (early stopping) | 0.1092 | 0.0780 | 0.894 | 0.89 % |
+| Random Forest | `n_estimators=300`, `max_depth=12`, `n_jobs=-1` | **0.1072** | **0.0755** | **0.898** | **0.87 %** |
+
+> Random Forest se posiciona como modelo “champion” al entregar el mejor balance entre MAE/RMSE, MAPE bajo y R² alto. Sus métricas alimentan las bandas ±MAE y el mensaje de precisión que se muestran en el tablero.
 
 
 
@@ -143,4 +144,4 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 ## 9. Observaciones y siguientes pasos
 - La ubicación (localidad/barrio) y el tipo de inmueble son determinantes del precio; el área presenta efecto no lineal.
 - El tablero y el script de modelado emplean el mismo set de variables, por lo que la integración con la API será directa (solo se requiere aplicar las mismas transformaciones `log10` y `get_dummies` en el backend).
-- Siguientes pasos: (i) corregir el parámetro inválido en `LinearRegression`, (ii) ejecutar los experimentos finales para reportar MAE/RMSE en COP desde MLflow y (iii) enriquecer con variables geoespaciales y validación cruzada por localidad.
+- Se profundizará en el enriquecimiento con variables geoespaciales y en la validación cruzada por localidad para seguir elevando la precisión del modelo y la calidad de los insights que consume el tablero.
