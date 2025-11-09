@@ -70,7 +70,7 @@
     }
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 18px 24px;
       margin-bottom: 24px;
     }
@@ -156,10 +156,11 @@
     .muted {
       color: var(--muted);
     }
-    .charts {
+    .insights-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
+      align-items: start;
     }
     .chart-card {
       border: 1px solid var(--border);
@@ -189,6 +190,28 @@
       height: 36px;
       fill: var(--primary);
     }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(111, 44, 255, 0.08);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .list-compact {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .list-compact li {
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: var(--muted);
+    }
     footer {
       text-align: center;
       padding: 24px;
@@ -209,13 +232,17 @@
       <p class="muted">Estos datos se enviarán al modelo predictivo y personalizan los comparables que verás más adelante.</p>
       <div class="form-grid">
         <div>
-          <label>Ubicación</label>
+          <label>Localidad / barrio</label>
           <select>
-            <option>Bogotá</option>
-            <option>Medellín</option>
-            <option>Cali</option>
+            <option>Usaquén</option>
+            <option>Chapinero</option>
+            <option>Suba</option>
+            <option>Kennedy</option>
+            <option>Bosa</option>
+            <option>Teusaquillo</option>
+            <option>Barrios Unidos</option>
           </select>
-          <p class="helper-text">Selecciona la ciudad donde se encuentra el inmueble.</p>
+          <p class="helper-text">Selecciona la localidad o barrio en Bogotá para ajustar el contexto.</p>
         </div>
         <div>
           <label>Tipo de inmueble</label>
@@ -259,6 +286,8 @@
           </div>
           <p class="muted">Valor estimado</p>
           <div class="price">$250.000.000</div>
+          <div class="pill">Intervalo ±MAE: $230M – $270M</div>
+          <p class="helper-text">El intervalo se actualizará con las métricas reales del modelo en producción.</p>
           <p><strong>Teniendo en cuenta:</strong></p>
           <ul class="summary-list">
             <li>50 m²</li>
@@ -268,16 +297,23 @@
           </ul>
           <p class="helper-text">Cuando el modelo esté desplegado, también mostraremos intervalo de confianza y fecha de actualización.</p>
         </div>
-        <div class="charts">
+        <div class="insights-grid">
           <div class="chart-card">
-            <h4>Relación área vs. precio en tu ciudad</h4>
-            <p class="helper-text">Compara tu inmueble con casos similares registrados el último mes.</p>
+            <h4>Relación área vs. precio en Bogotá</h4>
+            <p class="helper-text">Compara tu inmueble con registros recientes de la misma ciudad y tipología.</p>
             <div class="chart-placeholder">Visualización: dispersión + línea de tendencia</div>
           </div>
           <div class="chart-card">
-            <h4>Cómo se comportan otras ciudades</h4>
-            <p class="helper-text">Identifica mercados más caros o accesibles para tomar decisiones de inversión.</p>
-            <div class="chart-placeholder">Visualización: bubble plot por ciudad</div>
+            <h4>Factores que más impactan tu avalúo</h4>
+            <p class="helper-text">Basado en la importancia de variables (SHAP / feature importance) del modelo seleccionado.</p>
+            <ul class="list-compact">
+              <li>1. Localidad / barrio</li>
+              <li>2. Área (m²)</li>
+              <li>3. Tipo de inmueble</li>
+              <li>4. Número de cuartos</li>
+              <li>5. Número de baños</li>
+            </ul>
+            <div class="chart-placeholder" style="height: 90px;">Placeholder: barras horizontales</div>
           </div>
         </div>
       </div>

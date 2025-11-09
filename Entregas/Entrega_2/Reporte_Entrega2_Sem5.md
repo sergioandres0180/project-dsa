@@ -15,15 +15,17 @@
 ## 1. Problema y contexto (Bogotá)
 La estimación del valor comercial de vivienda en **Bogotá** suele apoyarse en comparaciones manuales y criterios subjetivos. Esto introduce variabilidad y tiempos de respuesta elevados para compradores, vendedores y entidades financieras. Con el crecimiento de fuentes abiertas confiables a nivel **ciudad**, es factible construir una **solución analítica** que estandarice y acelere la valoración, con métricas de precisión trazables.
 
+Esta situación reduce la transparencia y la comparabilidad de los avalúos e impacta la toma de decisiones de hogares, inmobiliarias, aseguradoras y banca hipotecaria. Con este proyecto buscamos disminuir tiempos y sesgos, entregando estimaciones consistentes y explicables para inmuebles en Bogotá, soportadas en datos abiertos verificables.
 
 
 ## 2. Pregunta de negocio y alcance
-**Pregunta de negocio.** ¿Cómo desarrollar e implementar un modelo de regresión que estime con precisión y rapidez el **valor** de un inmueble en **Bogotá** usando variables físicas, de localización y socioeconómicas?
+**Pregunta de negocio.** ¿Cómo desarrollar e implementar un **modelo de predicción** (aprendizaje supervisado) que estime con precisión y rapidez el **valor** de un inmueble en **Bogotá** usando variables físicas, de localización y socioeconómicas?
 
 **Alcance (MVP de esta entrega).**
 - Entradas: *área cubierta*, *número de cuartos*, *tipo de inmueble*, *localidad/barrio*, y otras disponibles en el dataset.
 - Salida: *precio estimado* y bandas de error (±MAE).
 - Métricas objetivo: **RMSE** y **MAE** en validación; reporte de **R²**.
+- **Supuestos de la entrega:** enfoque en vivienda residencial; valores en COP; uso de datos abiertos consolidados para Bogotá.
 - Fuera de alcance: Integración con APIs externas, actualización en tiempo real y despliegue productivo.
 
 ### Cambios respecto a la Entrega 1
@@ -35,23 +37,17 @@ La estimación del valor comercial de vivienda en **Bogotá** suele apoyarse en 
 ## 3. Conjuntos de datos a emplear (Bogotá)
 **Archivo base:** `inmuebles_bogota.csv` (9,520 registros, 8 columnas).  
 **Breve descripción:** datos de anuncios de inmuebles en Bogotá consolidados desde fuentes abiertas; variables principales: `valor` (precio), `área`, `habitaciones`, `baños`, `tipo`, `barrio` y `upz`.  
-**Nota:** el detalle de calidad, cardinalidad y exploración se presenta en la **Sección 4 (EDA)**.
+**Exploración breve (EDA mínima):** a continuación se incluye un resumen con hallazgos rápidos relevantes para el modelado.
 
-## 4. Exploración de datos (EDA)
-A continuación, se presenta un resumen estadístico de variables numéricas, cardinalidad de variables categóricas y distribución de ubicaciones. Se incluye además una variable derivada `precio_m2_calc` cuando es posible (precio/área > 0).
+### 3.1 Exploración breve (EDA mínima)
 
+- **Tamaño:** 9,520 registros / 8 columnas.
 
-### 4.1 Estadísticos descriptivos (numéricos)
-|                |   conteo |   missing_% |   media |   desv_std |   min |   q1 |   mediana |   q3 |    max |
-|:---------------|---------:|------------:|--------:|-----------:|------:|-----:|----------:|-----:|-------:|
-| habitaciones   |     9520 |           0 |   3.072 |      2.05  |     1 |    2 |         3 |    3 |    110 |
-| baños          |     9520 |           0 |   2.448 |      1.255 |     0 |    2 |         2 |    3 |      9 |
-| área           |     9520 |           0 | 146.665 |   1731.38  |     2 |   57 |        80 |  135 | 166243 |
-| valor          |        0 |         100 | nan     |    nan     |   nan |  nan |       nan |  nan |    nan |
-| precio_m2_calc |        0 |         100 | nan     |    nan     |   nan |  nan |       nan |  nan |    nan |
+- **Variables clave:** valor (precio), área, habitaciones, baños, tipo, barrio y UPZ.
 
+- **Hallazgos rápidos:** predominan apartamentos sobre casas; la oferta se concentra en zonas del norte; se recomienda tratar atípicos en área/precio antes del entrenamiento.
 
-### 4.3 Top barrios por número de registros
+#### Top barrios por número de registros
 |                    |   registros |
 |:-------------------|------------:|
 | Usaquén            |        1105 |
@@ -70,8 +66,7 @@ A continuación, se presenta un resumen estadístico de variables numéricas, ca
 | El Batán           |         133 |
 | Puente Aranda      |         116 |
 
-
-### 4.4 Distribución por tipo de inmueble
+#### Distribución por tipo de inmueble
 |                     |   registros |
 |:--------------------|------------:|
 | Apartamento         |        7327 |
@@ -82,22 +77,6 @@ A continuación, se presenta un resumen estadístico de variables numéricas, ca
 | Bodega              |          13 |
 | Finca               |          11 |
 | Lote                |           6 |
-
-
-### 4.5 Correlación con `valor` (numéricas)
-|                |   corr_con_valor |
-|:---------------|-----------------:|
-| habitaciones   |              nan |
-| baños          |              nan |
-| área           |              nan |
-| precio_m2_calc |              nan |
-
-
-### 4.6 Detección exploratoria de atípicos (IQR)
-|    | columna        |   outliers_estimados |   limite_inferior |   limite_superior |
-|---:|:---------------|---------------------:|------------------:|------------------:|
-|  0 | valor          |                    0 |               nan |               nan |
-|  1 | precio_m2_calc |                    0 |               nan |               nan |
 
 
 ## 5. Modelos desarrollados y evaluación
