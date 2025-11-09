@@ -97,16 +97,19 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 
 
 ## 5. Modelos desarrollados y evaluación
-Se consideran al menos dos familias: (i) **baselines** (Regresión Lineal, Ridge/Lasso) y (ii) **ensambles** (Random Forest, opcional Gradient Boosting). Se comparan por RMSE/MAE/R² en validación.
+- **Fuente y preparación:** el script `models/models-mlflow.py` consume `Notebooks/inmuebles_bogota 2.csv` (9.5k registros). Se limpian los campos `Valor` y `Área` (remoción de símbolos y log10 para estabilizar varianza) y se generan las columnas `log_valorventa` y `log_marea`. Las variables categóricas `Tipo` y `Barrio` se convierten con `pd.get_dummies`.
+- **Conjunto de entrenamiento:** `X = [Tipo, Habitaciones, Baños, log_marea, Barrio]`, `y = log_valorventa`. Se realiza `train_test_split` 80/20 con semilla 42.
+- **Experimentación:** cada modelo se entrena dentro de un run MLflow (`modelos_inmuebles_bogota`) registrando parámetros, métricas y artefactos (`mlflow.sklearn.log_model`). Esto permite replicar el entrenamiento y comparar resultados.
+- **Modelos evaluados:** baselines (Regresión Lineal, Ridge) y ensambles (Random Forest, LightGBM). Se escogieron porque equilibran interpretabilidad y capacidad de capturar relaciones no lineales.
+- **Pendiente:** ajustar el parámetro inválido `n_jobs` en `LinearRegression` y consolidar las métricas finales (MAE/RMSE en COP) para reportarlas en la próxima iteración.
 
-| Modelo | Features | Hiperparámetros | RMSE | MAE | R² |
-|---|---|---|---:|---:|---:|
-| Regresión lineal | [área, cuartos, tipo, localidad/barrio] | log(target)=NO/SÍ |  |  |  |
-| Ridge/Lasso | idem | α= |  |  |  |
-| Random Forest | idem + interacciones simples | n_estimators=, max_depth= |  |  |  |
-| (Opcional) GB/XGB | idem | learning_rate=, n_estimators= |  |  |  |
+| Modelo | Features | Hiperparámetros clave | Registro MLflow |
+|---|---|---|---|
+| Regresión lineal | área (log), cuartos, baños, tipo, barrio | default sklearn | `modelo_linearregression` |
+| Ridge | idem | `alpha=4.0` | `modelo_ridge` |
+| Random Forest | idem + interacciones implícitas | `n_estimators=200`, `max_depth=6`, `max_features=8` | `modelo_randomforest` |
+| LightGBM | idem | `num_leaves=31`, `learning_rate=0.01`, `n_estimators=200` | `modelo_lightgbm` |
 
-> **Criterio de selección:** mejor RMSE/MAE, estabilidad y simplicidad del modelo.
 
 
 
@@ -121,8 +124,8 @@ Se consideran al menos dos familias: (i) **baselines** (Regresión Lineal, Ridge
 - **Objetivo:** operacionalizar la respuesta a la pregunta de negocio permitiendo que usuarios no técnicos ingresen los datos del inmueble y reciban un avalúo consistente con contexto de mercado.
 - **Entradas:** localidad/barrio (selector alineado con UPZ), tipo de inmueble, área cubierta (m²), número de cuartos y número de baños. Cada campo incluye ayudas visuales para asegurar calidad en la captura.
 - **Salidas:** valor estimado en COP, intervalo ±MAE mostrado como píldora destacada, resumen de características evaluadas, visualización de relación área vs. precio en Bogotá y módulo “Factores que más impactan tu avalúo” (espacio reservado para SHAP/feature importance).
-- **Estado actual:** mockup navegable (`dashboard/mockup/mockup.html`) que define layout, textos y flujo. Puede abrirse con `open dashboard/mockup/mockup.html` o sirviendo la carpeta con `python3 -m http.server 8000`.
-- **Siguiente paso:** conectar el formulario al endpoint `POST /api/v1/avaluo` para poblar el tablero con las predicciones reales y gestionar estados `loading/success/error`.
+- **Implementación:** además del mockup HTML (`dashboard/mockup/mockup.html`), se construyó una app en Streamlit (`dashboard/app.py`). Esta versión ejecutable replica el diseño final, captura los inputs y, mientras se conecta la API, genera respuestas mock que permiten demostrar el flujo completo. Se ejecuta con `cd dashboard && streamlit run app.py`.
+- **Integración prevista:** el formulario consumirá `POST /api/v1/avaluo`. La app ya incluye un helper (`MODEL_ENDPOINT`) para redirigir la llamada a la API real tan pronto se despliegue.
 
 
 
@@ -139,4 +142,5 @@ Se consideran al menos dos familias: (i) **baselines** (Regresión Lineal, Ridge
 
 ## 9. Observaciones y siguientes pasos
 - La ubicación (localidad/barrio) y el tipo de inmueble son determinantes del precio; el área presenta efecto no lineal.
-- Siguientes pasos: enriquecer con variables geoespaciales (distancia a vías/zonas de interés), robustecer detección de atípicos y evaluar validación cruzada por localidad.
+- El tablero y el script de modelado emplean el mismo set de variables, por lo que la integración con la API será directa (solo se requiere aplicar las mismas transformaciones `log10` y `get_dummies` en el backend).
+- Siguientes pasos: (i) corregir el parámetro inválido en `LinearRegression`, (ii) ejecutar los experimentos finales para reportar MAE/RMSE en COP desde MLflow y (iii) enriquecer con variables geoespaciales y validación cruzada por localidad.
