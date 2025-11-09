@@ -1,9 +1,15 @@
+![Banner Simulación](imagenes/Banner.png)
+
 # Entrega 2 – S5 PROJECT E2 (Semana 5)
 
 **Proyecto:** Valoración de inmuebles en Bogotá
 
-**Fecha:** 2025-11-09 17:40
+## Integrantes del equipo
 
+- Diego Alejandro Lemus Guzman
+- Valeria Iglesias Miranda
+- Sergio Andres Perdomo Murcia
+- Danilo Suarez Vargas
 
 
 ## 1. Problema y contexto (Bogotá)
@@ -20,47 +26,16 @@ La estimación del valor comercial de vivienda en **Bogotá** suele apoyarse en 
 - Métricas objetivo: **RMSE** y **MAE** en validación; reporte de **R²**.
 - Fuera de alcance: Integración con APIs externas, actualización en tiempo real y despliegue productivo.
 
+### Cambios respecto a la Entrega 1
+- **Ámbito geográfico:** de *Colombia* → **Bogotá**, por disponibilidad y confiabilidad de datasets abiertos a nivel ciudad.
+- **Datos:** se sustituyen fuentes generales por un corte consolidado exclusivo de Bogotá; se priorizan variables robustas y disponibles (precio, área, habitaciones, baños, tipo, barrio/UPZ).
+- **Alcance del MVP:** se mantiene el prototipo con predicción y métricas (RMSE/MAE), sin APIs públicas ni actualización en tiempo real; se incorporan experimentos trazables en MLflow en EC2.
 
 
 ## 3. Conjuntos de datos a emplear (Bogotá)
 **Archivo base:** `inmuebles_bogota.csv` (9,520 registros, 8 columnas).  
-**Origen:** consolidado por el equipo a partir de fuentes abiertas disponibles para Bogotá (ver carpeta `data/raw` del repositorio).  
-**Corte:** no especificado.
-
-**Columnas clave detectadas automáticamente** (pueden renombrarse en el código para estandarizar):
-- Precio: `valor`
-- Área: `None`
-- Cuartos: `habitaciones`
-- Baños: `baños`
-- Parqueaderos: `None`
-- Tipo de inmueble: `tipo`
-- Barrio: `barrio`
-- Localidad: `None`
-- Estrato: `None`
-- Latitud/Longitud: `None`, `None`
-
-
-### 3.1 Calidad de datos (faltantes por columna)
-|                |   pct_missing |
-|:---------------|--------------:|
-| valor          |        100    |
-| precio_m2_calc |        100    |
-| upz            |          0.44 |
-| tipo           |          0    |
-| descripcion    |          0    |
-| habitaciones   |          0    |
-| baños          |          0    |
-| área           |          0    |
-| barrio         |          0    |
-
-### 3.2 Variables categóricas – cardinalidad y faltantes
-|    | columna     |   niveles |   faltantes_% |
-|---:|:------------|----------:|--------------:|
-|  1 | descripcion |       316 |      0        |
-|  2 | barrio      |       149 |      0        |
-|  3 | upz         |        63 |      0.441176 |
-|  0 | tipo        |         8 |      0        |
-
+**Breve descripción:** datos de anuncios de inmuebles en Bogotá consolidados desde fuentes abiertas; variables principales: `valor` (precio), `área`, `habitaciones`, `baños`, `tipo`, `barrio` y `upz`.  
+**Nota:** el detalle de calidad, cardinalidad y exploración se presenta en la **Sección 4 (EDA)**.
 
 ## 4. Exploración de datos (EDA)
 A continuación, se presenta un resumen estadístico de variables numéricas, cardinalidad de variables categóricas y distribución de ubicaciones. Se incluye además una variable derivada `precio_m2_calc` cuando es posible (precio/área > 0).
@@ -154,7 +129,7 @@ Se consideran al menos dos familias: (i) **baselines** (Regresión Lineal, Ridge
 
 
 ## 8. Reporte de trabajo en equipo (resumen)
-> Nota: sin nombres propios en este documento; el detalle estará en el repositorio (commits/issues).
+> **Integrantes:** Diego Alejandro Lemus Guzman; Valeria Iglesias Miranda; Sergio Andres Perdomo Murcia; Danilo Suarez Vargas.
 
 - **Datos/EDA:** preparación de cortes Bogotá, diccionario, limpieza básica.
 - **Modelado:** experimentos en MLflow, comparación de modelos y selección.
