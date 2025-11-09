@@ -128,6 +128,11 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 - **Implementación:** además del mockup HTML (`dashboard/mockup/mockup.html`), se construyó una app en Streamlit (`dashboard/app.py`). Esta versión ejecutable replica el diseño final, captura los inputs y, mientras se conecta la API, genera respuestas mock que permiten demostrar el flujo completo. Se ejecuta con `cd dashboard && streamlit run app.py`.
 - **Integración prevista:** el formulario consumirá `POST /api/v1/avaluo`. La app ya incluye un helper (`MODEL_ENDPOINT`) para redirigir la llamada a la API real tan pronto se despliegue.
 
+![Vista interactiva del tablero](Imagenes/Imagen_dashboard_interactiva.png)
+*Figura 1. Formulario del tablero con ayudas contextuales y CTA principal.*
+
+![Vista de resultados del tablero](Imagenes/Imagen_dashboard_resultado.png)
+*Figura 2. Panel de resultados con valor estimado, intervalo ±MAE y visualización de comparables.*
 
 
 ## 8. Reporte de trabajo en equipo (resumen)
