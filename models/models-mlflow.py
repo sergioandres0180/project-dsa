@@ -35,7 +35,7 @@ X = pd.get_dummies(X, columns=['Tipo', 'Barrio'], drop_first=True)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Configurar MLflow 
-mlflow.set_tracking_uri("http://localhost:5000")
+#mlflow.set_tracking_uri("http://localhost:5000")
 # registre el experimento
 experiment = mlflow.set_experiment("modelos_inmuebles_bogota")
 
