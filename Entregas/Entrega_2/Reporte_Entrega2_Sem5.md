@@ -47,36 +47,53 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 
 - **Hallazgos rápidos:** predominan apartamentos sobre casas; la oferta se concentra en zonas del norte; se recomienda tratar atípicos en área/precio antes del entrenamiento.
 
-#### Top barrios por número de registros
-|                    |   registros |
-|:-------------------|------------:|
-| Usaquén            |        1105 |
-| Zona Noroccidental |         877 |
-| Bosa               |         589 |
-| Kennedy            |         589 |
-| Cedritos           |         554 |
-| Barrios Unidos     |         473 |
-| Engativa           |         462 |
-| Suba               |         443 |
-| Santa Barbara      |         438 |
-| Chapinero          |         332 |
-| Fontibón           |         270 |
-| Chico Reservado    |         225 |
-| Teusaquillo        |         180 |
-| El Batán           |         133 |
-| Puente Aranda      |         116 |
-
-#### Distribución por tipo de inmueble
-|                     |   registros |
-|:--------------------|------------:|
-| Apartamento         |        7327 |
-| Casa                |        2043 |
-| Oficina/Consultorio |          60 |
-| Local               |          38 |
-| Edificio            |          22 |
-| Bodega              |          13 |
-| Finca               |          11 |
-| Lote                |           6 |
+<table style="width:100%; table-layout:fixed;">
+  <tr>
+    <td style="vertical-align:top; width:50%; padding-right:12px;">
+      <strong>Top barrios por número de registros</strong>
+      <table>
+        <thead>
+          <tr><th></th><th style="text-align:right;">registros</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Usaquén</td><td style="text-align:right;">1105</td></tr>
+          <tr><td>Zona Noroccidental</td><td style="text-align:right;">877</td></tr>
+          <tr><td>Bosa</td><td style="text-align:right;">589</td></tr>
+          <tr><td>Kennedy</td><td style="text-align:right;">589</td></tr>
+          <tr><td>Cedritos</td><td style="text-align:right;">554</td></tr>
+          <tr><td>Barrios Unidos</td><td style="text-align:right;">473</td></tr>
+          <tr><td>Engativa</td><td style="text-align:right;">462</td></tr>
+          <tr><td>Suba</td><td style="text-align:right;">443</td></tr>
+          <tr><td>Santa Barbara</td><td style="text-align:right;">438</td></tr>
+          <tr><td>Chapinero</td><td style="text-align:right;">332</td></tr>
+          <tr><td>Fontibón</td><td style="text-align:right;">270</td></tr>
+          <tr><td>Chico Reservado</td><td style="text-align:right;">225</td></tr>
+          <tr><td>Teusaquillo</td><td style="text-align:right;">180</td></tr>
+          <tr><td>El Batán</td><td style="text-align:right;">133</td></tr>
+          <tr><td>Puente Aranda</td><td style="text-align:right;">116</td></tr>
+        </tbody>
+      </table>
+    </td>
+    <td style="vertical-align:top; width:50%; padding-left:12px;">
+      <strong>Distribución por tipo de inmueble</strong>
+      <table>
+        <thead>
+          <tr><th></th><th style="text-align:right;">registros</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Apartamento</td><td style="text-align:right;">7327</td></tr>
+          <tr><td>Casa</td><td style="text-align:right;">2043</td></tr>
+          <tr><td>Oficina/Consultorio</td><td style="text-align:right;">60</td></tr>
+          <tr><td>Local</td><td style="text-align:right;">38</td></tr>
+          <tr><td>Edificio</td><td style="text-align:right;">22</td></tr>
+          <tr><td>Bodega</td><td style="text-align:right;">13</td></tr>
+          <tr><td>Finca</td><td style="text-align:right;">11</td></tr>
+          <tr><td>Lote</td><td style="text-align:right;">6</td></tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</table>
 
 
 ## 5. Modelos desarrollados y evaluación
