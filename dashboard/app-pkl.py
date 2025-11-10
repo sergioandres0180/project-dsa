@@ -126,15 +126,54 @@ if "valor_estimado" in st.session_state:
 
     with col_viz:
         st.subheader("3. Contexto del mercado en Bogotá")
-        # Mock de dispersión (puedes dejar tu función mock_market_data)
+        
+        # Generar datos de ejemplo similares al inmueble ingresado
         rng = np.random.default_rng(hash(payload["localidad"] + payload["tipo_inmueble"]) % 1_000_000)
-        area_mock = rng.uniform(35, 180, size=60)
-        precio_mock = 2.5 + 0.015 * area_mock + rng.normal(0, 0.2, size=area_mock.size)
-        df_mock = pd.DataFrame({"Área (m²)": area_mock, "Precio (M COP)": precio_mock})
-        st.scatter_chart(df_mock, x="Área (m²)", y="Precio (M COP)")
+        area_mock = rng.uniform(payload["area_m2"]*0.7, payload["area_m2"]*1.3, size=30)
+        cuartos_mock = rng.integers(max(1, payload["cuartos"]-1), payload["cuartos"]+2, size=30)
+        banos_mock = rng.integers(max(1, payload["banos"]-1), payload["banos"]+2, size=30)
+
+        df_mock = pd.DataFrame({
+            "area_m2": area_mock,
+            "cuartos": cuartos_mock,
+            "banos": banos_mock,
+            "tipo_inmueble": payload["tipo_inmueble"],
+            "localidad": payload["localidad"]
+        })
+
+        # Preparar features y predecir
+        X_mock = pd.DataFrame([{
+            "Habitaciones": row["cuartos"],
+            "Baños": row["banos"],
+            "log_marea": np.log10(row["area_m2"]),
+        } for _, row in df_mock.iterrows()])
+
+        # Inicializar dummies
+        for col in columnas_modelo:
+            if col not in X_mock.columns:
+                X_mock[col] = 0
+
+        # Marcar dummies de tipo y barrio
+        tipo_col = f"Tipo_{payload['tipo_inmueble']}"
+        barrio_col = f"Barrio_{payload['localidad']}"
+        if tipo_col in X_mock.columns:
+            X_mock[tipo_col] = 1
+        if barrio_col in X_mock.columns:
+            X_mock[barrio_col] = 1
+
+        # Reordenar columnas
+        X_mock = X_mock[columnas_modelo]
+
+        # Predecir precios
+        log_valores_pred = modelo.predict(X_mock)
+        valores_pred = 10 ** log_valores_pred
+        df_mock["Precio (M COP)"] = valores_pred / 1e6  # en millones
+
+        st.scatter_chart(df_mock, x="area_m2", y="Precio (M COP)")
 
         st.write("Detalle del payload enviado (para depuración):")
         st.code(json.dumps(payload, indent=2, ensure_ascii=False))
+
 
 st.divider()
 st.caption("Versión con modelo RandomForest y columnas reales cargadas desde .pkl")
