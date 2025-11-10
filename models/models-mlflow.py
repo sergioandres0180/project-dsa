@@ -40,7 +40,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 experiment = mlflow.set_experiment("modelos_inmuebles_bogota")
 
 modelos = {
-    "RandomForest": RandomForestRegressor(n_estimators=200, max_depth=6, max_features=8, random_state=42),
+    "RandomForest": RandomForestRegressor(n_estimators=100, max_depth=6, max_features=8, random_state=42),
     "Ridge": Ridge(alpha=4.0),
     "LinearRegression": LinearRegression(n_jobs=-1),
     "LightGBM": lgb.LGBMRegressor(num_leaves=31, learning_rate=0.01, n_estimators=200)
