@@ -128,7 +128,7 @@ En conclusión, las métricas muestran que el modelo de regresión lineal ofrece
 
 ### 4.2 Modelo de Ridge
 
-En un segundo momento se entrenó el modelo de Ridge Regression, el cual es una modificación del modelo de regresión lineal que incorpora regularización L2 para reducir el sobreajuste y manejar la multicolinealidad entre variables. Se consideraron las mismas variables y solo se consideró la variable alpha, que controla la fuerza de regularización L2.
+En un segundo momento, se entrenó el modelo de Ridge Regression, el cual es una modificación del modelo de regresión lineal que incorpora regularización L2 para reducir el sobreajuste y manejar la multicolinealidad entre variables. Se consideraron las mismas variables y solo se consideró el hiperparámetro alpha, que controla la fuerza de regularización L2.
 
 Se corrió el modelo con α = 50, 0.01, 1.0, 10.0 y 4.0. El modelo que obtuvo mejores métricas fue el que usó α = 4.0, logrando un  MAE de 0.096, indicando un error absoluto promedio del 9.7% en la escala logarítmica. El MSE fue de 0.018, mostrando que los errores más grandes tienen un impacto moderado. Y un R² de 0.841, lo que significa que el modelo explica aproximadamente el 83.9% de la variabilidad del precio de los inmuebles.
 
@@ -140,10 +140,9 @@ Posteriormente, entrenamos un modelo de Random Forest Regressor, un modelo de en
 
 Se evaluaron diferentes configuraciones de los hiperparámetros n_estimators, max_features y max_depth para seleccionar la combinación más optima. Entre las combinaciones que probamos, el modelo con n_estimators = 500, max_features = 8 y max_depth = None obtuvo las mejores métricas, un MAE de 0.063, un MSE de 0.011 y un R² de 0.905.
 
-Estas métricas si muestran una mejora signitificativa respecto a los dos modelos anteriores, lo cual indica que Random Forest logra capturar esas relaciones no lineales entre las variables y logra reducir los errores de predicción. Un MAE menor indica que las predcciones son más cercanas a las reales, un MSE menor indica menor impacto en los valores grandes  y un R² un poco mayor, de un 90%, confirma que el modelo logra explicar casi toda la variabilidad de los datos.
+Estas métricas muestran una mejora signitificativa respecto a los dos modelos anteriores, lo cual indica que Random Forest logra capturar esas relaciones no lineales entre las variables y logra reducir los errores de predicción. Un MAE menor indica que las predcciones son más cercanas a las reales, un MSE menor indica menor impacto en los valores grandes  y un R² un poco mayor, de un 90%, confirma que el modelo logra explicar casi toda la variabilidad de los datos.
 
 ### 4.4 LightGBM
-
 
 Para entrenar el modelo LightGBM, se utilizaron las mismas características que en los modelos anteriores, log(Área), Baños, Habitaciones, Tipo y Barrio. Esta selección se realizó porque estas variables son las que impactan directamente en el valor de los inmuebles:
 
@@ -165,7 +164,7 @@ El modelo que mostró mejores métricas fue n_estimators igual a 300, un learnin
 Al analizar estos 4 modelos, se llegan a las siguientes conclusiones:
 
 - El modelo de regresión lineal y Ridge, mostraron métricas muy similares, lo cual podría indicar que no se presentaba problemas de sobreajuste o colinealidad en los datos.
-- El modelo Random Forest si mejoró las métricas, capturando relaciones no lineales y combinaciones de variables. Logró mejorar el R² hasta el 90% y reducir significativamente el MAE a 0.063. Este modelo es menor interpretable, pero logra mejorar las predicciones cuando existen relaciones no lineales entre las variables.
+- El modelo Random Forest mejoró las métricas respecto a los dos modelos anteriores, capturando relaciones no lineales y combinaciones de variables. Logró mejorar el R² hasta el 90% y reducir significativamente el MAE a 0.063. Este modelo es menor interpretable, pero logra mejorar las predicciones cuando existen relaciones no lineales entre las variables.
 - Por último, LightGBM mostró métricas similares a Random Forest, es un modelo que se destaca por su velocidad en el entrenamiento y eficiencia en conjuntos de datos grandes, por lo cual sería necesario considerarlo si se llegara a aumentar los datos de entrenamiento.
 
 Para este proyecto, el modelo de Random Forest con n_estimators=500, max_depth=None y max_features=8 se destacó como el mejor en términos de MAE y R², siendo así el modelo escogido para el despliegue y desarrollo de la interefax.
