@@ -97,7 +97,13 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 
 
 ## 5. Modelos desarrollados y evaluación
-Se consideran al menos 4 modelos diferentes, cambiando sus hiperparámetros para observar el comportamiento de las métricas de evaluación. Y se obtuvieron las siguientes mejores métricas para cada modelo:
+
+- **Fuente y preparación:** el script `models/models-mlflow.py` y el notebook `03_PRUEBA_MODELOS_BOGOTA.ipynb` consumen `inmuebles_bogota 2.csv` (9.5k registros). Se limpian los campos `Valor` y `Área`, se crean `log_valorventa` y `log_marea` para estabilizar la varianza y se codifican `Tipo` y `Barrio` con `pd.get_dummies`.
+- **Conjunto de entrenamiento:** `X = [Tipo, Habitaciones, Baños, log_marea, Barrio]`, `y = log_valorventa`, con partición 80/20 y semilla 42.
+- **Experimentación:** cada modelo registra parámetros, métricas y artefactos en el experimento MLflow `modelos_inmuebles_bogota`, lo que asegura trazabilidad y reproducibilidad.
+- **Resultados:** los ensambles superan a los baselines lineales. Las métricas se reportan en la escala log10 del target, acompañadas del MAPE para facilitar su interpretación.
+
+Se consideran 4 modelos diferentes, cambiando sus hiperparámetros para observar el comportamiento de las métricas de evaluación. Y se obtuvieron las siguientes mejores métricas para cada modelo:
 
 | Modelo | Features | Hiperparámetros | MSE | MAE | R² |
 |---|---|---|---:|---:|---:|
@@ -117,7 +123,6 @@ A continuación, se muestra un gráfico de predicciones vs valores reales en esc
 El MAE del modelo fue de 0.096 en la base logaritmica, lo que indica que, en promedio la predicción del precio difiere de su valor real en aproximadamente 9.6% en escala logarítmica. Esto muestra que los errores absolutos son moderados y relativamente consistentes entre los diferentes registros. El MSE fue de 0.018, lo que muestra que los errores más grandes tienen un impacto moderado en la evaluación global del modelo. Un valor bajo de MSE nos dice que no existen muchas predicciones extremadamente desviadas respecto al valor real. El R² alcanzó un valor de 0.841, lo que indica que el 84.1% de la variabilidad de los precios de los inmuebles se explica por las variables seleccionadas. Esto confirma que el modelo lineal logra capturar la mayoría de la información presente en los datos.
 
 En conclusión, las métricas muestran que el modelo de regresión lineal ofrece un buen punto de partida. Siendo así un modelo interpretable y que explica un gran parte de la variabilidad de los datos. Sin embargo, se probaron otros modelos más complejos para poder capturar relaciones no lineales entre las variables.
-
 
 ### 3.2 Modelo de Ridge
 
@@ -179,9 +184,14 @@ El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se desca
 - **Objetivo:** operacionalizar la respuesta a la pregunta de negocio permitiendo que usuarios no técnicos ingresen los datos del inmueble y reciban un avalúo consistente con contexto de mercado.
 - **Entradas:** localidad/barrio (selector alineado con UPZ), tipo de inmueble, área cubierta (m²), número de cuartos y número de baños. Cada campo incluye ayudas visuales para asegurar calidad en la captura.
 - **Salidas:** valor estimado en COP, intervalo ±MAE mostrado como píldora destacada, resumen de características evaluadas, visualización de relación área vs. precio en Bogotá y módulo “Factores que más impactan tu avalúo” (espacio reservado para SHAP/feature importance).
-- **Estado actual:** mockup navegable (`dashboard/mockup/mockup.html`) que define layout, textos y flujo. Puede abrirse con `open dashboard/mockup/mockup.html` o sirviendo la carpeta con `python3 -m http.server 8000`.
-- **Siguiente paso:** conectar el formulario al endpoint `POST /api/v1/avaluo` para poblar el tablero con las predicciones reales y gestionar estados `loading/success/error`.
+- **Implementación:** además del mockup HTML (`dashboard/mockup/mockup.html`), se construyó una app en Streamlit (`dashboard/app.py`). Esta versión ejecutable replica el diseño final, captura los inputs y, mientras se conecta la API, genera respuestas mock que permiten demostrar el flujo completo. Se ejecuta con `cd dashboard && streamlit run app.py`.
+- **Integración prevista:** el formulario consumirá `POST /api/v1/avaluo`. La app ya incluye un helper (`MODEL_ENDPOINT`) para redirigir la llamada a la API real tan pronto se despliegue.
 
+![Vista interactiva del tablero](Imagenes/Imagen_dashboard_interactiva.png)
+*Figura 1. Formulario del tablero con ayudas contextuales y CTA principal.*
+
+![Vista de resultados del tablero](Imagenes/Imagen_dashboard_resultado.png)
+*Figura 2. Panel de resultados con valor estimado, intervalo ±MAE y visualización de comparables.*
 
 
 ## 8. Reporte de trabajo en equipo (resumen)
@@ -197,4 +207,5 @@ El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se desca
 
 ## 9. Observaciones y siguientes pasos
 - La ubicación (localidad/barrio) y el tipo de inmueble son determinantes del precio; el área presenta efecto no lineal.
-- Siguientes pasos: enriquecer con variables geoespaciales (distancia a vías/zonas de interés), robustecer detección de atípicos y evaluar validación cruzada por localidad.
+- El tablero y el script de modelado emplean el mismo set de variables, por lo que la integración con la API será directa (solo se requiere aplicar las mismas transformaciones `log10` y `get_dummies` en el backend).
+- Se profundizará en el enriquecimiento con variables geoespaciales y en la validación cruzada por localidad para seguir elevando la precisión del modelo y la calidad de los insights que consume el tablero.
