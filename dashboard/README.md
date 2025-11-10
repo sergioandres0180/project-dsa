@@ -1,5 +1,11 @@
 # Dashboard AvaluaTuHome
 
+AvaluaTuHome es el módulo de visualización del proyecto de avalúo de inmuebles en Bogotá. Su objetivo es que un analista o usuario final pueda:
+
+1. Ingresar las características del inmueble (localidad, tipo, área, cuartos y baños).
+2. Consultar el modelo supervisado para obtener el valor estimado, la banda de error ±MAE y el contexto del mercado (comparables y variables más influyentes).
+3. Consumir el servicio indistintamente desde mock data (modo demo) o desde la API real cuando el equipo de modelado la despliegue.
+
 Este directorio contiene dos artefactos complementarios:
 
 1. `mockup/`: maqueta HTML estática utilizada para acordar textos, colores y jerarquía del tablero.
