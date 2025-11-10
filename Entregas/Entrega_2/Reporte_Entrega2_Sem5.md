@@ -167,7 +167,7 @@ Al analizar estos 4 modelos, se llegan a las siguientes conclusiones:
 - El modelo Random Forest mejoró las métricas respecto a los dos modelos anteriores, capturando relaciones no lineales y combinaciones de variables. Logró mejorar el R² hasta el 90% y reducir significativamente el MAE a 0.063. Este modelo es menor interpretable, pero logra mejorar las predicciones cuando existen relaciones no lineales entre las variables.
 - Por último, LightGBM mostró métricas similares a Random Forest, es un modelo que se destaca por su velocidad en el entrenamiento y eficiencia en conjuntos de datos grandes, por lo cual sería necesario considerarlo si se llegara a aumentar los datos de entrenamiento.
 
-Para este proyecto, el modelo de Random Forest con n_estimators=500, max_depth=None y max_features=8 se destacó como el mejor en términos de MAE y R², siendo así el modelo escogido para el despliegue y desarrollo de la interefax.
+Para este proyecto, el modelo de Random Forest con n_estimators=500, max_depth=None y max_features=8 se destacó como el mejor en términos de MAE y R², siendo así el modelo escogido para el despliegue y desarrollo de la interefaz.
 
 ## 5. Experimentos (MLflow en EC2)
 
