@@ -186,7 +186,10 @@ El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se desca
 - **Objetivo:** operacionalizar la respuesta a la pregunta de negocio permitiendo que usuarios no técnicos ingresen los datos del inmueble y reciban un avalúo consistente con contexto de mercado.
 - **Entradas:** localidad/barrio (selector alineado con UPZ), tipo de inmueble, área cubierta (m²), número de cuartos y número de baños. Cada campo incluye ayudas visuales para asegurar calidad en la captura.
 - **Salidas:** valor estimado en COP, intervalo ±MAE mostrado como píldora destacada, resumen de características evaluadas, visualización de relación área vs. precio en Bogotá y módulo “Factores que más impactan tu avalúo” (espacio reservado para SHAP/feature importance).
-- **Implementación:** además del mockup HTML (`dashboard/mockup/mockup.html`), se construyó una app en Streamlit (`dashboard/app.py`). Esta versión ejecutable replica el diseño final, captura los inputs y, mientras se conecta la API, genera respuestas mock que permiten demostrar el flujo completo. Se ejecuta con `cd dashboard && streamlit run app.py`.
+- **Implementación:** además del mockup HTML (`dashboard/mockup/mockup.html`), se construyeron dos apps en Streamlit:
+  - `dashboard/app.py`: usa lógica mock o la API `POST /api/v1/avaluo` (vía `MODEL_ENDPOINT`) para mostrar el flujo completo.
+  - `dashboard/app-pkl.py`: carga el modelo **Random Forest (n_estimators=500, max_depth=None, max_features=8)** serializado (`models/model.pkl` + `columnas_modelo.pkl`) para ejecutar la estimación en local sin depender de la API, ideal para demos offline.
+- **Ejecución:** en ambos casos se utiliza `streamlit run` desde la carpeta `dashboard`; la versión `.pkl` requiere instalar previamente las dependencias listadas en `models/requirements.txt` y disponer de los artefactos exportados desde MLflow.
 - **Integración prevista:** el formulario consumirá `POST /api/v1/avaluo`. La app ya incluye un helper (`MODEL_ENDPOINT`) para redirigir la llamada a la API real tan pronto se despliegue.
 
 ![Vista interactiva del tablero](Imagenes/Imagen_dashboard_interactiva.png)
@@ -199,15 +202,7 @@ El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se desca
 ## 7. Reporte de trabajo en equipo (resumen)
 > **Integrantes:** Diego Alejandro Lemus Guzman; Valeria Iglesias Miranda; Sergio Andres Perdomo Murcia; Danilo Suarez Vargas.
 
-- **Datos/EDA:** preparación de cortes Bogotá, diccionario, limpieza básica.
-- **Modelado (Valeria Iglesias):** experimentos en MLflow, comparación de modelos y selección (en progreso).
-- **Tablero (Danilo Suarez):** diseño de la experiencia, construcción del mockup y definición de la integración con la API.
-- **Infra/DevOps:** configuración de entorno (EC2/venv), tracking MLflow.
-- **Documentación:** armado de este reporte y evidencias.
-
-
-
-## 8. Observaciones y siguientes pasos
-- La ubicación (localidad/barrio) y el tipo de inmueble son determinantes del precio; el área presenta efecto no lineal.
-- El tablero y el script de modelado emplean el mismo set de variables, por lo que la integración con la API será directa (solo se requiere aplicar las mismas transformaciones `log10` y `get_dummies` en el backend).
-- Se profundizará en el enriquecimiento con variables geoespaciales y en la validación cruzada por localidad para seguir elevando la precisión del modelo y la calidad de los insights que consume el tablero.
+- **Datos/EDA (Diego A. Lemus):** consolidación de los datasets de anuncios para Bogotá, depuración de variables numéricas/categóricas, exploraciones iniciales y construcción del diccionario de datos que alimenta los scripts de entrenamiento.
+- **Modelado (Valeria Iglesias):** diseño y ejecución de los experimentos en MLflow, comparación de modelos (Ridge, Random Forest, LightGBM), selección del “champion” y exporte de artefactos (`model.pkl`, `columnas_modelo.pkl`).
+- **Tablero y Documentación (Danilo Suarez):** diseño UI/UX, creación del mockup, implementación de las apps Streamlit (`app.py` y `app-pkl.py`), escritura del README y elaboración de las secciones del reporte relacionadas con el tablero y el proceso general.
+- **Infra/DevOps (Sergio A. Perdomo):** aprovisionamiento de la instancia EC2, configuración del entorno virtual/MLflow server, manejo de dependencias y soporte para la descarga/uso del modelo en local.

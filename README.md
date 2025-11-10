@@ -7,7 +7,7 @@ Repositorio del proyecto de valoración de inmuebles en Bogotá para la materia 
 - `Notebooks/`: exploración, limpieza y experimentos iniciales.
 - `data/`: datasets en bruto y procesados (cuando aplica, versionados con DVC).
 - `models/`: scripts de entrenamiento (`models-mlflow.py`) y artefactos exportados desde MLflow.
-- `dashboard/`: mockup + app Streamlit (`app.py`) que consume el modelo.
+- `dashboard/`: mockup + apps Streamlit (`app.py` y `app-pkl.py`) para consumir el modelo (vía API o `.pkl`).
 - `Entregas/`: reportes y evidencias por semana.
 
 ## Componentes principales
