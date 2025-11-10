@@ -47,6 +47,8 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 
 - **Hallazgos rápidos:** predominan apartamentos sobre casas; la oferta se concentra en zonas del norte; se recomienda tratar atípicos en área/precio antes del entrenamiento.
 
+### 3.2 Distribución de registros
+
 <table style="width:100%; table-layout:fixed;">
   <tr>
     <td style="vertical-align:top; width:50%; padding-right:12px;">
@@ -96,7 +98,7 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 </table>
 
 
-## 5. Modelos desarrollados y evaluación
+## 4. Modelos desarrollados y evaluación
 
 - **Fuente y preparación:** el script `models/models-mlflow.py` y el notebook `03_PRUEBA_MODELOS_BOGOTA.ipynb` consumen `inmuebles_bogota 2.csv` (9.5k registros). Se limpian los campos `Valor` y `Área`, se crean `log_valorventa` y `log_marea` para estabilizar la varianza y se codifican `Tipo` y `Barrio` con `pd.get_dummies`.
 - **Conjunto de entrenamiento:** `X = [Tipo, Habitaciones, Baños, log_marea, Barrio]`, `y = log_valorventa`, con partición 80/20 y semilla 42.
@@ -109,10 +111,10 @@ Se consideran 4 modelos diferentes, cambiando sus hiperparámetros para observar
 |---|---|---|---:|---:|---:|
 | Regresión lineal | [área, cuartos, tipo, localidad/barrio] | log(target)=SÍ | 0.018 | 0.096 | 0.841 |
 | Ridge | idem | α=0.01 | 0.018 | 0.096 | 0.841 |
-| Random Forest | idem + interacciones simples | n_estimators=500, max_depth=None, max_features=8 | 0.011 | 0.0.063 | 0.905 |
+| Random Forest | idem + interacciones simples | n_estimators=500, max_depth=None, max_features=8 | 0.011 | 0.063 | 0.905 |
 | LGBM | idem | learning_rate=0.01, n_estimators=500, num_leaves=15 | 0.014 | 0.086 | 0.872 |
 
-### 3.1 Modelo de Regresión Lineal
+### 4.1 Modelo de Regresión Lineal
 
 Primero se entrenó un modelo de regresión lineal como base, debido a su simplicidad, rapidez de entrenamiento e interpretabilidad, lo que nos permitió tener un punto de partida para comparar los modelos. Se utilizó un modelo LinearRegression, considerando las variables log(Área), Baños, Habitaciones, Tipo y Barrio, y se aplicó la transformación logarítmica a la variable predictora Valor para estabilizar la varianza y reducir el sesgo.
 
@@ -124,7 +126,7 @@ El MAE del modelo fue de 0.096 en la base logaritmica, lo que indica que, en pro
 
 En conclusión, las métricas muestran que el modelo de regresión lineal ofrece un buen punto de partida. Siendo así un modelo interpretable y que explica un gran parte de la variabilidad de los datos. Sin embargo, se probaron otros modelos más complejos para poder capturar relaciones no lineales entre las variables.
 
-### 3.2 Modelo de Ridge
+### 4.2 Modelo de Ridge
 
 En un segundo momento se entrenó el modelo de Ridge Regression, el cual es una modificación del modelo de regresión lineal que incorpora regularización L2 para reducir el sobreajuste y manejar la multicolinealidad entre variables. Se consideraron las mismas variables y solo se consideró la variable alpha, que controla la fuerza de regularización L2.
 
@@ -132,7 +134,7 @@ Se corrió el modelo con α = 50, 0.01, 1.0, 10.0 y 4.0. El modelo que obtuvo me
 
 Sin embargo, estas métricas no mostraron una mejora respecto al modelo de regresión lineal, lo que indica que, la regularización L2 no aportó un beneficio sobre la regresión lineal simple.
 
-### 3.3 Random Forest
+### 4.3 Random Forest
 
 Posteriormente, entrenamos un modelo de Random Forest Regressor, un modelo de ensamble basado en árboles de decisión que permite capturar relaciones no lineales y manejar interacciones más complejas entre variables. Este modelo es menos interpretable, pero puede mejorar el desempeño al reducir el sesgo del modelo lineal y manejar la varianza a través del promedio de múltiples árboles.
 
@@ -140,7 +142,7 @@ Se evaluaron diferentes configuraciones de los hiperparámetros n_estimators, ma
 
 Estas métricas si muestran una mejora signitificativa respecto a los dos modelos anteriores, lo cual indica que Random Forest logra capturar esas relaciones no lineales entre las variables y logra reducir los errores de predicción. Un MAE menor indica que las predcciones son más cercanas a las reales, un MSE menor indica menor impacto en los valores grandes  y un R² un poco mayor, de un 90%, confirma que el modelo logra explicar casi toda la variabilidad de los datos.
 
-### 3.4 RLightGBM
+### 3.4 Random Forest
 
 Para entrenar el modelo LightGBM, se utilizaron las mismas características que en los modelos anteriores, log(Área), Baños, Habitaciones, Tipo y Barrio. Esta selección se realizó porque estas variables son las que impactan directamente en el valor de los inmuebles:
 
@@ -157,7 +159,7 @@ LightGBM es un modelo de gradiente boosting basado en árboles que permite captu
 
 El modelo que mostró mejores métricas fue n_estimators igual a 300, un learning_rate igual a 0.01 y un num_leaves igual a 30, logrando un MAE de 0.088, indicando un error absoluto promedio del 8.8%. Un MSE de 0.015, indicando que los errores grandes tuvieron un impacto moderado. Y un R² de 0.868, lo que significa que el 86.8% de la variabilidad del precio de los inmuebles se explica por las variables seleccionadas.
 
-### 3.5 Conclusiones generales sobre el comportamiento de los modelos
+### 4.5 Conclusiones generales sobre el comportamiento de los modelos
 
 Al analizar estos 4 modelos, se llegan a las siguientes conclusiones:
 
@@ -167,7 +169,7 @@ Al analizar estos 4 modelos, se llegan a las siguientes conclusiones:
 
 Para este proyecto, el modelo de Random Forest con n_estimators=500, max_depth=None y max_features=8 se destacó como el mejor en términos de MAE y R², siendo así el modelo escogido para el despliegue y desarrollo de la interefax.
 
-## 6. Experimentos (MLflow en EC2)
+## 5. Experimentos (MLflow en EC2)
 
 Los modelos se corrieron sobre una máquina virtual Ubuntu, tipo t2.medium, con 20 GB de almacenamiento. La dirección IP es: 34.228.156.128. Se adjunta evidencia de la maquina en ejecución:
 
@@ -180,7 +182,7 @@ Se ejecutaron en total 20 modelos, 5 combinaciones de hiperparámetros para cada
 El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se descargó de mlflow en formato .pkl. Este archivo contiene el modelo entrenado con sus parámetros optimizados.
 
 
-## 7. Prototipo / Tablero
+## 6. Prototipo / Tablero
 - **Objetivo:** operacionalizar la respuesta a la pregunta de negocio permitiendo que usuarios no técnicos ingresen los datos del inmueble y reciban un avalúo consistente con contexto de mercado.
 - **Entradas:** localidad/barrio (selector alineado con UPZ), tipo de inmueble, área cubierta (m²), número de cuartos y número de baños. Cada campo incluye ayudas visuales para asegurar calidad en la captura.
 - **Salidas:** valor estimado en COP, intervalo ±MAE mostrado como píldora destacada, resumen de características evaluadas, visualización de relación área vs. precio en Bogotá y módulo “Factores que más impactan tu avalúo” (espacio reservado para SHAP/feature importance).
@@ -194,7 +196,7 @@ El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se desca
 *Figura 2. Panel de resultados con valor estimado, intervalo ±MAE y visualización de comparables.*
 
 
-## 8. Reporte de trabajo en equipo (resumen)
+## 7. Reporte de trabajo en equipo (resumen)
 > **Integrantes:** Diego Alejandro Lemus Guzman; Valeria Iglesias Miranda; Sergio Andres Perdomo Murcia; Danilo Suarez Vargas.
 
 - **Datos/EDA:** preparación de cortes Bogotá, diccionario, limpieza básica.
@@ -205,7 +207,7 @@ El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se desca
 
 
 
-## 9. Observaciones y siguientes pasos
+## 8. Observaciones y siguientes pasos
 - La ubicación (localidad/barrio) y el tipo de inmueble son determinantes del precio; el área presenta efecto no lineal.
 - El tablero y el script de modelado emplean el mismo set de variables, por lo que la integración con la API será directa (solo se requiere aplicar las mismas transformaciones `log10` y `get_dummies` en el backend).
 - Se profundizará en el enriquecimiento con variables geoespaciales y en la validación cruzada por localidad para seguir elevando la precisión del modelo y la calidad de los insights que consume el tablero.
