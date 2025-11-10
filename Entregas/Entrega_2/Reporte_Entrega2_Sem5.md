@@ -142,7 +142,7 @@ Se evaluaron diferentes configuraciones de los hiperparámetros n_estimators, ma
 
 Estas métricas si muestran una mejora signitificativa respecto a los dos modelos anteriores, lo cual indica que Random Forest logra capturar esas relaciones no lineales entre las variables y logra reducir los errores de predicción. Un MAE menor indica que las predcciones son más cercanas a las reales, un MSE menor indica menor impacto en los valores grandes  y un R² un poco mayor, de un 90%, confirma que el modelo logra explicar casi toda la variabilidad de los datos.
 
-### 3.4 Random Forest
+### 4.4 Random Forest
 
 Para entrenar el modelo LightGBM, se utilizaron las mismas características que en los modelos anteriores, log(Área), Baños, Habitaciones, Tipo y Barrio. Esta selección se realizó porque estas variables son las que impactan directamente en el valor de los inmuebles:
 
