@@ -2,6 +2,7 @@ import pickle
 import pandas as pd
 import numpy as np
 
+
 ruta = "../Notebooks/inmuebles_bogota 2.csv"
 df = pd.read_csv(ruta) 
 
