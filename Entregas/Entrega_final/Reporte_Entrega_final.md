@@ -1,8 +1,8 @@
 ![Banner Simulación](imagenes/Banner.png)
 
-# Entrega 2 – S5 PROJECT E2 (Semana 5)
+# Entrega final – AvaluaTuHome
 
-**Proyecto:** Valoración de inmuebles en Bogotá
+**Proyecto:** Valoración de inmuebles en Bogotá (modelo + API + tablero en producción)
 
 ## Integrantes del equipo
 
@@ -182,15 +182,13 @@ Se ejecutaron en total 20 modelos, 5 combinaciones de hiperparámetros para cada
 El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se descargó de mlflow en formato .pkl. Este archivo contiene el modelo entrenado con sus parámetros optimizados.
 
 
-## 6. Prototipo / Tablero
-- **Objetivo:** operacionalizar la respuesta a la pregunta de negocio permitiendo que usuarios no técnicos ingresen los datos del inmueble y reciban un avalúo consistente con contexto de mercado.
-- **Entradas:** localidad/barrio (selector alineado con UPZ), tipo de inmueble, área cubierta (m²), número de cuartos y número de baños. Cada campo incluye ayudas visuales para asegurar calidad en la captura.
-- **Salidas:** valor estimado en COP, intervalo ±MAE mostrado como píldora destacada, resumen de características evaluadas, visualización de relación área vs. precio en Bogotá y módulo “Factores que más impactan tu avalúo” (espacio reservado para SHAP/feature importance).
-- **Implementación:** además del mockup HTML (`dashboard/mockup/mockup.html`), se construyeron dos apps en Streamlit:
-  - `dashboard/app.py`: usa lógica mock o la API `POST /api/v1/avaluo` (vía `MODEL_ENDPOINT`) para mostrar el flujo completo.
-  - `dashboard/app-pkl.py`: carga el modelo **Random Forest (n_estimators=500, max_depth=None, max_features=8)** serializado (`models/model.pkl` + `columnas_modelo.pkl`) para ejecutar la estimación en local sin depender de la API, ideal para demos offline.
-- **Ejecución:** en ambos casos se utiliza `streamlit run` desde la carpeta `dashboard`; la versión `.pkl` requiere instalar previamente las dependencias listadas en `models/requirements.txt` y disponer de los artefactos exportados desde MLflow.
-- **Integración prevista:** el formulario consumirá `POST /api/v1/avaluo`. La app ya incluye un helper (`MODEL_ENDPOINT`) para redirigir la llamada a la API real tan pronto se despliegue.
+## 6. Tablero en producción
+- **Objetivo:** permitir a usuarios no técnicos ingresar datos del inmueble y recibir un avalúo con intervalo de confianza y contexto de mercado.
+- **Entradas:** localidad/barrio (Bogotá), tipo de inmueble, área cubierta (m²), cuartos y baños.
+- **Salidas:** valor estimado en COP, intervalo ±MAE, importancias de variables (feature importance) y gráfico área vs. precio con comparables en Bogotá.
+- **URLs productivas:** tablero `http://54.160.253.251:8501/`; API `http://3.90.237.192:8000/api/v1/avaluo` (docs en `/docs`).
+- **Implementación:** Streamlit (`dashboard/app.py`) conectado a la API de producción; imagenes Docker publicadas en ECR y desplegadas en ECS Fargate. La versión `app-pkl.py` queda como alternativa offline con el modelo serializado.
+- **Capturas:** ver figuras 1 y 2; Manual de usuario en `Entregas/Entrega_3/Manual_usuario_tablero.md`.
 
 ![Vista interactiva del tablero](Imagenes/Imagen_dashboard_interactiva.png)
 *Figura 1. Formulario del tablero con ayudas contextuales y CTA principal.*
@@ -198,8 +196,15 @@ El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se desca
 ![Vista de resultados del tablero](Imagenes/Imagen_dashboard_resultado.png)
 *Figura 2. Panel de resultados con valor estimado, intervalo ±MAE y visualización de comparables.*
 
+## 7. Despliegue y manuales
+- **Arquitectura:** API y tablero contenedorizados y desplegados en AWS ECS Fargate con imágenes en ECR. Security Groups abren puertos 8000 (API) y 8501 (tablero). Endpoints actuales: API `http://3.90.237.192:8000/api/v1/avaluo` y tablero `http://54.160.253.251:8501/`.
+- **Evidencias:** `/docs` de la API accesible, servicios ECS en RUNNING, UI del tablero funcional en la IP pública, runs en MLflow con artefactos (`model.pkl`, `columnas_modelo.pkl`).
+- **Manuales:** 
+  - Instalación/despliegue: `Entregas/Entrega_3/Manual_instalacion_tablero.md`
+  - Usuario final: `Entregas/Entrega_3/Manual_usuario_tablero.md`
 
-## 7. Reporte de trabajo en equipo (resumen)
+
+## 8. Reporte de trabajo en equipo (resumen)
 > **Integrantes:** Diego Alejandro Lemus Guzman; Valeria Iglesias Miranda; Sergio Andres Perdomo Murcia; Danilo Suarez Vargas.
 
 - **Datos/EDA (Diego A. Lemus):** consolidación de los datasets de anuncios para Bogotá, depuración de variables numéricas/categóricas, exploraciones iniciales y construcción del diccionario de datos que alimenta los scripts de entrenamiento.
