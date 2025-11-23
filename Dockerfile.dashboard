@@ -1,0 +1,15 @@
+FROM python:3.10-slim
+WORKDIR /app
+
+# Instala dependencias del tablero
+COPY dashboard/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia el código del tablero
+COPY dashboard/ dashboard/
+
+# Ajusta esta variable al endpoint público de la API una vez desplegada
+ENV MODEL_ENDPOINT=http://localhost:8000/api/v1/avaluo
+
+EXPOSE 8501
+CMD ["streamlit", "run", "dashboard/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
