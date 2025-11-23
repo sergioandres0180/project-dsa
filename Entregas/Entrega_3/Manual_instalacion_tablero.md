@@ -70,18 +70,65 @@ ECS Fargate orquesta los contenedores sin gestionar servidores; crea servicios p
 - Tablero: `http://54.160.253.251:8501/` y ejecuta un avalúo para confirmar respuesta.
 
 ## 8. Ejecución local (opcional, sin AWS)
-Para probar o depurar sin depender de la nube.
-API local:
-```bash
-pip install -r api/requirements.txt
-uvicorn api.main:app --host 0.0.0.0 --port 8000
-```
-Tablero local:
-```bash
-export MODEL_ENDPOINT="http://localhost:8000/api/v1/avaluo"
-pip install -r dashboard/requirements.txt
-streamlit run dashboard/app.py
-```
+Permite probar la API y el tablero en tu computador sin usar AWS. A continuación se describen los pasos desde cero.
+
+### 8.1 Instalación de Python y entorno virtual
+
+**macOS / Linux**
+1. Verifica que tengas Python 3 instalado:
+   ```bash
+   python3 --version
+   ```
+   Si no lo tienes, instala la versión 3.10+ desde https://www.python.org/downloads/.
+2. Crea un entorno virtual (aisla las librerías del proyecto):
+   ```bash
+   cd project-dsa
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+**Windows**
+1. Verifica Python:
+   ```powershell
+   python --version
+   ```
+   Si no lo tienes, instala Python 3.10+ desde https://www.python.org/downloads/windows/.
+2. Crea y activa el entorno virtual:
+   ```powershell
+   cd project-dsa
+   python -m venv .venv
+   .venv\Scripts\activate
+   ```
+
+### 8.2 Levantar la API en local
+1. Instala dependencias de la API:
+   ```bash
+   pip install -r api/requirements.txt
+   ```
+2. Ejecuta la API:
+   ```bash
+   uvicorn api.main:app --host 0.0.0.0 --port 8000
+   ```
+3. Abre `http://localhost:8000/docs` en el navegador y prueba el endpoint `POST /api/v1/avaluo`.
+
+### 8.3 Levantar el tablero en local
+1. En otra terminal, activa el mismo entorno virtual (`source .venv/bin/activate` en macOS/Linux, `.venv\Scripts\activate` en Windows).
+2. Define la URL de la API local:
+   ```bash
+   export MODEL_ENDPOINT="http://localhost:8000/api/v1/avaluo"   # macOS/Linux
+   ```
+   ```powershell
+   setx MODEL_ENDPOINT "http://localhost:8000/api/v1/avaluo"     # Windows (PowerShell)
+   ```
+3. Instala dependencias del tablero:
+   ```bash
+   pip install -r dashboard/requirements.txt
+   ```
+4. Ejecuta el tablero:
+   ```bash
+   streamlit run dashboard/app.py
+   ```
+5. Abre `http://localhost:8501` en tu navegador y realiza un avalúo de prueba.
 
 ## 9. Mantenimiento y cambios de IP
 Al redeployar pueden cambiar las IPs; un ALB evita actualizar el endpoint manualmente.

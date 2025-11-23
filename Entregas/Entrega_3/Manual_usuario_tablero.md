@@ -19,6 +19,9 @@
   - Área cubierta en m².
   - Número de cuartos y baños.
 
+![Formulario de datos](Imagen_1_panel_info_por_usuario.png)
+*Figura 1. Panel donde el usuario ingresa la información del inmueble.*
+
 ## 3. Datos que puedes ingresar (solo Bogotá)
 - **Localidad/barrio**: selecciona la localidad donde está el inmueble (Bogotá).
 - **Tipo de inmueble**: Apartamento, Casa, Studio u Oficina.
@@ -34,6 +37,9 @@
    - **Intervalo ±MAE**.
    - **Impacto de las variables**.
    - **Contexto de mercado (gráfico área vs. precio)**.
+
+![Ejemplo de resultado](inagen_21_resultado_ejemplo.png)
+*Figura 2. Resultado del avalúo con valor estimado, intervalo e impacto de variables.*
 
 ## 5. Cómo leer los resultados
 - **Valor estimado**: es la mejor estimación del modelo para el inmueble que ingresaste.
