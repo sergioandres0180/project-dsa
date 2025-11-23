@@ -21,17 +21,18 @@ Esta situación reduce la transparencia y la comparabilidad de los avalúos e im
 ## 2. Pregunta de negocio y alcance
 **Pregunta de negocio.** ¿Cómo desarrollar e implementar un **modelo de predicción** (aprendizaje supervisado) que estime con precisión y rapidez el **valor** de un inmueble en **Bogotá** usando variables físicas, de localización y socioeconómicas, y cómo disponibilizarlo a través de un tablero que encapsule las predicciones, su banda de error y la explicación del modelo?
 
-**Alcance (MVP de esta entrega).**
+**Alcance (entrega final).**
 - Entradas: *área cubierta*, *número de cuartos*, *tipo de inmueble*, *localidad/barrio*, y otras disponibles en el dataset.
 - Salida: *precio estimado* y bandas de error (±MAE).
 - Métricas objetivo: **RMSE** y **MAE** en validación; reporte de **R²**.
 - **Supuestos de la entrega:** enfoque en vivienda residencial; valores en COP; uso de datos abiertos consolidados para Bogotá.
-- Fuera de alcance: Integración con APIs externas, actualización en tiempo real y despliegue productivo.
+- Fuera de alcance: Integración con APIs externas adicionales, actualización en tiempo real y dominios propios/HTTPS.
 
-### Cambios respecto a la Entrega 1
-- **Ámbito geográfico:** de *Colombia* → **Bogotá**, por disponibilidad y confiabilidad de datasets abiertos a nivel ciudad.
-- **Datos:** se sustituyen fuentes generales por un corte consolidado exclusivo de Bogotá; se priorizan variables robustas y disponibles (precio, área, habitaciones, baños, tipo, barrio/UPZ).
-- **Alcance del MVP:** se mantiene el prototipo con predicción y métricas (RMSE/MAE), sin APIs públicas ni actualización en tiempo real; se incorporan experimentos trazables en MLflow en EC2.
+### Cambios respecto a entregas anteriores (2/3)
+- **Ámbito y datos:** consolidación exclusiva de Bogotá con variables clave (precio, área, cuartos, baños, tipo, barrio/UPZ) y limpieza/log-transform para estabilizar varianza.
+- **Modelos:** experimentación completa en MLflow (Ridge, Random Forest, LightGBM); se selecciona Random Forest (500 árboles) como modelo campeón.
+- **API y empaquetado:** se construye la API de inferencia (FastAPI) y se empaquetan API/tablero en Docker; imágenes publicadas en ECR.
+- **Despliegue:** API y tablero desplegados en ECS Fargate con endpoints públicos; manuales de instalación y usuario actualizados.
 
 
 ## 3. Conjuntos de datos a emplear (Bogotá)
@@ -188,26 +189,60 @@ El RUN ID del modelo seleccionado fue 4d891f949d1143a4b290e9bbe630a04a, se desca
 - **Salidas:** valor estimado en COP, intervalo ±MAE, importancias de variables (feature importance) y gráfico área vs. precio con comparables en Bogotá.
 - **URLs productivas:** tablero `http://54.160.253.251:8501/`; API `http://3.90.237.192:8000/api/v1/avaluo` (docs en `/docs`).
 - **Implementación:** Streamlit (`dashboard/app.py`) conectado a la API de producción; imagenes Docker publicadas en ECR y desplegadas en ECS Fargate. La versión `app-pkl.py` queda como alternativa offline con el modelo serializado.
-- **Capturas:** ver figuras 1 y 2; Manual de usuario en `Entregas/Entrega_3/Manual_usuario_tablero.md`.
+- **Capturas:** ver a continuación; Manual de usuario en `Entregas/Entrega_3/Manual_usuario_tablero.md`.
 
-![Vista interactiva del tablero](Imagenes/Imagen_dashboard_interactiva.png)
-*Figura 1. Formulario del tablero con ayudas contextuales y CTA principal.*
+![Panel de captura de datos del tablero](Imagenes/Imagen_1_panel_info_por_usuario.png)
+*Panel del tablero donde se ingresan los datos del inmueble (localidad, tipo, área, cuartos y baños).*
 
-![Vista de resultados del tablero](Imagenes/Imagen_dashboard_resultado.png)
-*Figura 2. Panel de resultados con valor estimado, intervalo ±MAE y visualización de comparables.*
+![Resultados del tablero](Imagenes/inagen_21_resultado_ejemplo.png)
+*Vista de resultados con avalúo estimado, intervalo ±MAE, impacto de variables y comparables.*
 
 ## 7. Despliegue y manuales
-- **Arquitectura:** API y tablero contenedorizados y desplegados en AWS ECS Fargate con imágenes en ECR. Security Groups abren puertos 8000 (API) y 8501 (tablero). Endpoints actuales: API `http://3.90.237.192:8000/api/v1/avaluo` y tablero `http://54.160.253.251:8501/`.
+- **Arquitectura:** API y tablero contenedorizados y desplegados en AWS ECS Fargate con imágenes en ECR. Security Groups abren puertos 8000 (API) y 8501 (tablero). Endpoints actuales: API `http://3.90.237.192:8000/api/v1/avaluo` (docs en `/docs`) y tablero `http://54.160.253.251:8501/`.
 - **Evidencias:** `/docs` de la API accesible, servicios ECS en RUNNING, UI del tablero funcional en la IP pública, runs en MLflow con artefactos (`model.pkl`, `columnas_modelo.pkl`).
 - **Manuales:** 
   - Instalación/despliegue: `Entregas/Entrega_3/Manual_instalacion_tablero.md`
   - Usuario final: `Entregas/Entrega_3/Manual_usuario_tablero.md`
 
+![API desplegada en producción](Imagenes/API_implementada.png)
+*Vista de `/docs` de la API en el endpoint público (`http://3.90.237.192:8000/docs`).*
 
-## 8. Reporte de trabajo en equipo (resumen)
+![Servicio ECS en ejecución](Imagenes/Cluster_AWS_implementado.png)
+*Estado del clúster y servicios en AWS ECS (API y tablero desplegados).*
+
+![Tablero desplegado en producción](Imagenes/Tablero_implementado_url.png)
+*Tablero operativo en la URL pública (`http://54.160.253.251:8501/`).*
+
+## 8. Resultados y conclusiones
+El modelo campeón (Random Forest, 500 árboles) entrega un MAE log10 ≈ 0.0755 (8–9% de error relativo) y R² ≈ 0.898, lo que se traduce en avalúos en COP con intervalos coherentes con el desempeño histórico. Para el usuario final, el tablero ofrece un avalúo en segundos, acompañado de un rango de confianza visible y explicabilidad básica (importancias), facilitando decisiones en contextos inmobiliarios y financieros en Bogotá. La solución está desplegada en ECS con imágenes en ECR y endpoints públicos documentados, respaldada por manuales de instalación y uso; este ensamblaje de datos, versionado de modelos, API y front-end consumible demuestra un flujo de analítica reproducible y listo para iterar (reentrenar, publicar nueva imagen y redeploy) con mínimos cambios operativos.
+
+## 9. Fuentes, código y soportes
+- **API:** carpeta `api/` (FastAPI); Dockerfile de la API en la raíz (`Dockerfile.api`).
+- **Tablero:** carpeta `dashboard/` (Streamlit); Dockerfile del tablero en la raíz (`Dockerfile.dashboard`).
+- **Modelo y artefactos:** carpeta `models/` (`model.pkl`, `columnas_modelo.pkl`, scripts de entrenamiento y `requirements.txt`).
+- **Repositorio Git:** `https://github.com/sergioandres0180/project-dsa.git`.
+- **Manuales:** `Entregas/Entrega_3/Manual_instalacion_tablero.md` y `Entregas/Entrega_3/Manual_usuario_tablero.md`.
+- **Evidencias MLflow:** runs registrados (run ID: 4d891f949d1143a4b290e9bbe630a04a) con capturas en `Entregas/Entrega_final/Imagenes/` (maquina-ubuntu.png, modelos.png).
+
+## 10. Reporte de trabajo en equipo (resumen)
 > **Integrantes:** Diego Alejandro Lemus Guzman; Valeria Iglesias Miranda; Sergio Andres Perdomo Murcia; Danilo Suarez Vargas.
 
-- **Datos/EDA (Diego A. Lemus):** consolidación de los datasets de anuncios para Bogotá, depuración de variables numéricas/categóricas, exploraciones iniciales y construcción del diccionario de datos que alimenta los scripts de entrenamiento.
-- **Modelado (Valeria Iglesias):** diseño y ejecución de los experimentos en MLflow, comparación de modelos (Ridge, Random Forest, LightGBM), selección del “champion” y exporte de artefactos (`model.pkl`, `columnas_modelo.pkl`).
-- **Tablero y Documentación (Danilo Suarez):** diseño UI/UX, creación del mockup, implementación de las apps Streamlit (`app.py` y `app-pkl.py`), escritura del README y elaboración de las secciones del reporte relacionadas con el tablero y el proceso general.
-- **Infra/DevOps (Sergio A. Perdomo):** aprovisionamiento de la instancia EC2, configuración del entorno virtual/MLflow server, manejo de dependencias y soporte para la descarga/uso del modelo en local.
+- **Datos y EDA (Diego A. Lemus):**
+  - Recolección y consolidación de datasets de anuncios de Bogotá.
+  - Limpieza de variables numéricas/categóricas; generación de `log_valorventa` y `log_marea`.
+  - Elaboración del diccionario de datos y hallazgos de EDA (distribuciones, outliers, variables clave).
+  - Aporte al guion del video en la parte de contexto/datos.
+- **Modelado y métricas (Valeria Iglesias):**
+  - Configuración de experimentos en MLflow (Ridge, Random Forest, LightGBM) con trazabilidad de parámetros y runs.
+  - Tuning y selección del modelo campeón (Random Forest 500 árboles); exporte de `model.pkl` y `columnas_modelo.pkl`.
+  - Documentación de métricas (MAE/RMSE/R², MAPE) y justificación de la elección del modelo.
+- **Tablero e integración (Danilo Suarez):**
+  - Diseño UI/UX y desarrollo de `dashboard/app.py` y `app-pkl.py` (inputs, resultados, importancias, gráficos).
+  - Integración con la API de producción (MODEL_ENDPOINT) y refinamiento de textos/estilo.
+  - Actualización de manuales (usuario/instalación) y README, incorporación de banner e imágenes.
+- **Empaquetado y despliegue (Danilo Suarez):**
+  - Creación de Dockerfile de API y tablero; build multi-arch y publicación en ECR.
+  - Despliegue de API y tablero en ECS Fargate, configuración de SG y validación de endpoints.
+- **Infra/DevOps y manuales (Sergio A. Perdomo):**
+  - Aprovisionamiento de EC2/MLflow, instalación de dependencias y soporte para uso local del modelo.
+  - Validación de servicios desplegados, revisión de endpoints y contribución a manuales (instalación/usuario).
