@@ -50,6 +50,30 @@ model, columnas_modelo = load_artifacts()
 INTERVAL_FACTOR = 0.05
 
 
+def compute_feature_importance() -> Dict[str, float]:
+    """Agrega las importancias del modelo a nivel de variable original."""
+    if not hasattr(model, "feature_importances_"):
+        return {}
+    importancias = dict.fromkeys(
+        ["Localidad / barrio", "Área (m²)", "Tipo de inmueble", "Cuartos", "Baños"], 0.0
+    )
+    for col_name, imp in zip(columnas_modelo, model.feature_importances_):
+        if col_name.startswith("Barrio_"):
+            importancias["Localidad / barrio"] += imp
+        elif col_name.startswith("Tipo_"):
+            importancias["Tipo de inmueble"] += imp
+        elif col_name == "log_marea":
+            importancias["Área (m²)"] += imp
+        elif col_name == "Habitaciones":
+            importancias["Cuartos"] += imp
+        elif col_name == "Baños":
+            importancias["Baños"] += imp
+    return importancias
+
+
+FEATURE_IMPORTANCE = compute_feature_importance()
+
+
 def preparar_features(payload: AvaluoRequest) -> pd.DataFrame:
     """Genera el vector de características alineado al entrenamiento."""
     df = pd.DataFrame(
@@ -95,4 +119,5 @@ def avaluo(payload: AvaluoRequest):
         "avaluo_cop": valor,
         "intervalo_confianza": intervalo,
         "inputs": json.loads(payload.json()),
+        "feature_importance": FEATURE_IMPORTANCE,
     }

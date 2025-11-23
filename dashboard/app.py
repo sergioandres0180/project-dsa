@@ -2,20 +2,21 @@
 AvaluaTuHome – Streamlit dashboard
 ----------------------------------
 Tablero interactivo para estimar el valor de un inmueble en Bogotá.
-Mientras el modelo/API real se integra, la aplicación usa datos y lógica mock
-para evidenciar el flujo completo y permitir pruebas locales.
+Conectado al modelo de producción vía API (`MODEL_ENDPOINT`).
 """
 
 from __future__ import annotations
 
 import json
 import os
+from pathlib import Path
 from dataclasses import dataclass
 from typing import Dict, Tuple
 
 import numpy as np
 import pandas as pd
 import streamlit as st
+import altair as alt
 
 
 # -----------------------------
@@ -44,6 +45,45 @@ BARRIOS = [
 TIPOS_INMUEBLE = ["Apartamento", "Casa", "Studio", "Oficina"]
 
 
+BASE_DIR = Path(__file__).resolve().parent
+ENDPOINT = os.getenv("MODEL_ENDPOINT")
+BANNER_PATH = BASE_DIR / "banner.png"
+
+# -----------------------------
+# Tema y estilo
+# -----------------------------
+st.markdown(
+    """
+    <style>
+    :root {
+        --primary: #592796;
+        --secondary: #2F0E4F;
+        --accent: #22D3EE;
+        --accent2: #2EC4B6;
+        --light: #C3B1F7;
+    }
+    .stApp {
+        background: linear-gradient(180deg, #2F0E4F 0%, #1B0A33 100%);
+        color: #FFFFFF;
+    }
+    div.stButton > button {
+        background-color: var(--primary);
+        color: #FFFFFF;
+        border-radius: 10px;
+        border: 1px solid #8F6AD9;
+    }
+    div.stButton > button:hover {
+        background-color: #8F6AD9;
+        color: #FFFFFF;
+    }
+    div[data-testid="stMetricValue"] { color: var(--accent2); }
+    div[data-testid="stMetricLabel"] { color: var(--light); }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
 @dataclass
 class PredictionResult:
     valor: float
@@ -51,46 +91,16 @@ class PredictionResult:
     feature_importance: Dict[str, float]
 
 
-def simulate_prediction(payload: Dict[str, float]) -> PredictionResult:
-    """Genera una predicción mock basándose en reglas simples."""
-    base_price = 2_500_000 * payload["area_m2"]
-    tipo_factor = {
-        "Apartamento": 1.0,
-        "Casa": 1.15,
-        "Studio": 0.85,
-        "Oficina": 1.1,
-    }.get(payload["tipo_inmueble"], 1.0)
-    barrio_factor = 1 + (BARRIOS.index(payload["localidad"]) / len(BARRIOS)) * 0.15
-    habitaciones_factor = 1 + (payload["cuartos"] - 2) * 0.05
-    banos_factor = 1 + (payload["banos"] - 1) * 0.04
-
-    valor = base_price * tipo_factor * barrio_factor * habitaciones_factor * banos_factor
-    ruido = np.random.normal(0, 5_000_000)
-    valor += ruido
-    intervalo = (valor - 25_000_000, valor + 25_000_000)
-
-    importancias = {
-        "Localidad / barrio": 0.40,
-        "Área (m²)": 0.30,
-        "Tipo de inmueble": 0.15,
-        "Cuartos": 0.10,
-        "Baños": 0.05,
-    }
-    return PredictionResult(valor=valor, intervalo=intervalo, feature_importance=importancias)
-
-
 def call_prediction_api(payload: Dict[str, float]) -> PredictionResult:
     """
-    Si existe la variable de entorno MODEL_ENDPOINT, intenta llamar a la API real.
-    En caso contrario, usa la simulación local.
+    Llama a la API real definida en MODEL_ENDPOINT.
     """
-    endpoint = os.getenv("MODEL_ENDPOINT")
-    if not endpoint:
-        return simulate_prediction(payload)
+    if not ENDPOINT:
+        raise RuntimeError("MODEL_ENDPOINT no está configurado; defínelo con la URL pública de la API.")
 
     import requests  # import local para evitar dependencia si no se usa
 
-    response = requests.post(endpoint, json=payload, timeout=10)
+    response = requests.post(ENDPOINT, json=payload, timeout=10)
     response.raise_for_status()
     data = response.json()
     return PredictionResult(
@@ -118,10 +128,14 @@ def format_cop(value: float) -> str:
 # Layout
 # -----------------------------
 
+if BANNER_PATH.exists():
+    st.image(str(BANNER_PATH), use_container_width=True)
 st.title("AvaluaTuHome")
 st.caption("Calculadora interactiva para estimar el valor de tu inmueble en Bogotá.")
 st.divider()
 
+if not ENDPOINT:
+    st.error("MODEL_ENDPOINT no está configurado. Define la URL pública de la API para usar el tablero en modo producción.")
 
 with st.form("avaluo_form"):
     st.subheader("1. Cuéntanos de tu inmueble")
@@ -169,9 +183,6 @@ if "result" in st.session_state:
 - Baños: **{payload['banos']}**
 """
         )
-        st.info(
-            "Cuando la API esté disponible, este valor se actualizará automáticamente manteniendo el mismo flujo."
-        )
 
         st.subheader("Impacto de las variables")
         if result.feature_importance:
@@ -182,22 +193,33 @@ if "result" in st.session_state:
             )
             st.bar_chart(fi_df)
         else:
-            st.write("Pendiente de conectar las importancias del modelo (SHAP o feature importance).")
+            st.write("El modelo actual no retorna importancias de variables (SHAP/feature importance).")
 
     with col_viz:
         st.subheader("3. Contexto del mercado en Bogotá")
         data_scatter = mock_market_data(payload["localidad"], payload["tipo_inmueble"])
         st.write("Relación área vs. precio para comparables recientes en la misma localidad.")
-        st.scatter_chart(data_scatter, x="Área (m²)", y="Precio (M COP)")
+        chart = (
+            alt.Chart(data_scatter)
+            .mark_circle(size=80, color="#22D3EE")
+            .encode(x="Área (m²)", y="Precio (M COP)")
+            .properties(height=320)
+            .interactive()
+        )
+        st.altair_chart(chart, use_container_width=True)
 
-        st.write("Detalle del payload enviado (para depuración):")
-        st.code(json.dumps(payload, indent=2, ensure_ascii=False))
+        st.subheader("Intervalo estimado")
+        st.write(
+            f"Rango de confianza basado en el desempeño histórico del modelo: "
+            f"{format_cop(result.intervalo[0])} – {format_cop(result.intervalo[1])}."
+        )
+        st.caption(
+            "El intervalo refleja la variabilidad esperada (±MAE). Use el valor central como referencia y este rango para evaluar escenarios conservador y optimista."
+        )
 
 else:
     st.info("Ingresa los datos del inmueble y presiona “Calcular avalúo estimado” para ver los resultados.")
 
 
 st.divider()
-st.caption(
-    "Versión mock (Semana 5). Integraremos la API de inferencia y métricas de MLflow en las próximas iteraciones."
-)
+st.caption("Resultados generados con el modelo de avalúos en producción.")
